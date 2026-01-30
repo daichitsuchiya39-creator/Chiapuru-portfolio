@@ -7,12 +7,13 @@ export const metadata: Metadata = {
 };
 
 const skills = [
+  { name: 'Excel/VBA', level: 95 },
   { name: 'Python', level: 90 },
   { name: 'Flask', level: 85 },
-  { name: 'Excel/VBA', level: 95 },
+  { name: 'HTML/CSS', level: 85 },
+  { name: 'AI / LLM活用', level: 75 },
   { name: 'JavaScript/TypeScript', level: 75 },
   { name: 'React/Next.js', level: 70 },
-  { name: 'HTML/CSS', level: 85 },
 ];
 
 const timeline = [
