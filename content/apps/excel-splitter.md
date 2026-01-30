@@ -1,5 +1,5 @@
 ---
-title: "Excel Sheet Extractor"
+title: "Excel Sheet Pic"
 description: "シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。"
 image: ""
 features:
@@ -16,9 +16,9 @@ externalLink: ""
 screenshots: []
 ---
 
-## Excel Sheet Extractorとは
+## Excel Sheet Picとは
 
-Excel Sheet Extractorは、大量のシートを含むExcelファイルから、必要なシートだけを簡単に抽出できるWebアプリケーションです。
+Excel Sheet Picは、大量のシートを含むExcelファイルから、必要なシートだけを簡単に抽出できるWebアプリケーションです。
 
 ## こんな方におすすめ
 
@@ -29,6 +29,6 @@ Excel Sheet Extractorは、大量のシートを含むExcelファイルから、
 
 ## 開発の背景
 
-大学職員として働く中で、シート数の多いExcelファイルを扱う機会が多くありました。必要なシートだけを別ファイルにする作業は、手作業だと時間がかかるし、ミスも起きやすい。
+日々の仕事でシート数の多いExcelファイルを扱う機会が多くありました。必要なシートだけを別ファイルにする作業は、手作業だと時間がかかるし、ミスも起きやすい。
 
 そこで、この作業を自動化するツールを開発しました。

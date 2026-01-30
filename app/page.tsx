@@ -28,7 +28,7 @@ export default async function Home() {
       <Hero
         subtitle="Hi, I'm Chiapuru 👋"
         title="仕事を効率化するツールを作っています"
-        description="大学職員として働きながら、日々の業務で感じた「こんなツールがあったらいいな」を形にしています。Excel自動化やWebアプリの開発を中心に、誰でも使える便利なツールを公開しています。"
+        description="日々の仕事で感じた「こんなツールがあったらいいな」を形にしています。Excel自動化やWebアプリの開発を中心に、誰でも使える便利なツールを公開しています。"
         ctaText="Check out my apps"
         ctaLink="/apps"
         secondaryCtaText="Read my blog"
@@ -102,7 +102,7 @@ export default async function Home() {
           <div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 p-12 text-center text-white">
             <h2 className="mb-4 text-3xl font-bold md:text-4xl">Ready to boost your productivity?</h2>
             <p className="mb-8 text-lg text-primary-100">
-              私が作ったツールで、あなたの日々の業務をもっと効率的に。
+              あなたの日々の業務を少しだけお手伝いします。
             </p>
             <Link
               href="/apps"
