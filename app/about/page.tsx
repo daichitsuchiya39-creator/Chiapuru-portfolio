@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Chiapuruのプロフィール。大学職員として働きながら、業務効率化ツールを開発する個人開発者。',
+  description: 'Chiapuruのプロフィール。AIを活用した業務効率化ツールを開発する個人開発者。',
 };
 
 const skills = [
@@ -17,14 +17,14 @@ const skills = [
 
 const timeline = [
   {
-    year: '現在',
-    title: '個人開発 × 大学職員',
-    description: '業務で感じた課題をツールで解決。副業としての起業準備も進行中。',
+    year: '2026',
+    title: 'Excel Sheet Pic & ポートフォリオサイト公開',
+    description: 'ExcelシートWebアプリをRenderで公開。Claude Codeを使ってポートフォリオサイトも開発。',
   },
   {
-    year: '2024',
-    title: 'Excel Sheet Extractor リリース',
-    description: '最初のWebアプリをリリース。Flaskで開発し、多くのユーザーに利用されている。',
+    year: '2025',
+    title: 'AI学習開始',
+    description: 'ChatGPTやClaudeなど大規模言語モデルの学習を開始。AIを活用したツール開発に挑戦。',
   },
   {
     year: '2020',
@@ -47,7 +47,7 @@ export default function AboutPage() {
               Hi, I&apos;m Chiapuru
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              大学職員 × 個人開発者
+              AI × 個人開発者
             </p>
           </div>
         </div>
@@ -60,11 +60,13 @@ export default function AboutPage() {
             <h2 className="section-title">About Me</h2>
             <div className="prose prose-lg prose-gray dark:prose-invert">
               <p>
-                大学職員として働きながら、日々の業務で感じた「こんなツールがあったらいいな」を形にしている個人開発者です。
+                日々の業務で感じた「こんなツールがあったらいいな」を形にしている個人開発者です。
+                経営・財務分析など細かい数字を扱う仕事をしてきた経験から、業務効率化への強い関心があります。
               </p>
               <p>
                 2020年にPythonを学び始め、最初は業務効率化のための小さなスクリプトを書いていました。
-                そこから徐々にWebアプリケーション開発に興味を持ち、Flask、React、Next.jsなどを学んでいます。
+                最近はAIの学習を始め、ChatGPTやClaudeなどを活用したツール開発に取り組んでいます。
+                このサイト自体もClaude Codeを使って開発しました。
               </p>
               <p>
                 私が作るツールは、すべて「自分が欲しかったもの」です。

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     template: '%s | Chiapuru',
   },
   description:
-    '大学職員 × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。Excel自動化、Python、Flaskなど。',
-  keywords: ['個人開発', 'Excel自動化', 'Python', 'Flask', 'ツール開発'],
+    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。Excel自動化、Python、AI活用など。',
+  keywords: ['個人開発', 'Excel自動化', 'Python', 'Flask', 'AI', 'ツール開発'],
   authors: [{ name: 'Chiapuru' }],
   creator: 'Chiapuru',
   openGraph: {
@@ -24,12 +24,12 @@ export const metadata: Metadata = {
     url: 'https://chiapuru.com',
     siteName: 'Chiapuru',
     title: 'Chiapuru - 仕事を効率化するツール',
-    description: '大学職員 × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Chiapuru - 仕事を効率化するツール',
-    description: '大学職員 × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
   },
   robots: {
     index: true,

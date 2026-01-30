@@ -6,13 +6,13 @@ import { getAllPosts } from '@/lib/blog';
 
 const featuredApps = [
   {
-    title: 'Excel Sheet Extractor',
-    description: 'シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。',
+    title: 'Excel Sheet Pic',
+    description: 'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で書式を崩さずに分割できます。',
     slug: 'excel-splitter',
   },
   {
     title: 'Coming Soon...',
-    description: '次のツールを開発中です。お楽しみに！',
+    description: '次のツールを開発中です。AIを活用したツールを準備しています！',
     slug: '',
     comingSoon: true,
   },
