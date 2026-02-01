@@ -13,7 +13,7 @@ tags: ["自己紹介", "ポートフォリオ", "新しい挑戦", "AI活用"]
 
 実は、これが初めてのサイトではありません。
 
-2021年6月から **giorigioblog.com** という個人ブログを運営してきました。そこでは「ベリロンのパンダ」という名前で、普通のサラリーマンが日々学んだことを綴っていました。
+2021年6月から **[giorigioblog.com](https://giorgioblog.com)** という個人ブログを運営してきました。そこでは「ベリロンのパンダ」という名前で、普通のサラリーマンが日々学んだことを綴っていました。
 
 そのブログが、2025年末にWordPressのハッキングを受けました。
 
@@ -43,7 +43,7 @@ tags: ["自己紹介", "ポートフォリオ", "新しい挑戦", "AI活用"]
 
 ## VibeCoding & Claude Codeで作った新しい家
 
-このサイトは、**VibeCoding** と **Claude Code** というAI開発ツールを使って構築しました。
+このサイトは、**Claude Code** というAI開発ツールを使って構築しました。
 
 技術スタックは：
 - Next.js 15 (App Router)
@@ -108,7 +108,7 @@ NFTコレクション制作や、その他の「面白いこと」に挑戦し�
 
 **以前のブログ：** [giorigioblog.com](https://giorigioblog.com)（記録として残しています）  
 **X（旧Twitter）：** [@chiapuru](https://twitter.com/chiapuru)  
-**GitHub：** 準備中
+**GitHub：** [@chiapuru](https://github.com/daichitsuchiya39-creator/)
 
 ---
 
