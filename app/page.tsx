@@ -9,6 +9,7 @@ const featuredApps = [
     title: 'Excel Sheet Pic',
     description: 'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で書式を崩さずに分割できます。',
     slug: 'excel-splitter',
+    image: '/images/app_image/Excel-Sheet-Pic.png',
   },
   {
     title: 'Coming Soon...',
@@ -52,6 +53,7 @@ export default async function Home() {
                 title={app.title}
                 description={app.description}
                 slug={app.slug}
+                image={app.image}
                 comingSoon={app.comingSoon}
               />
             ))}
