@@ -12,7 +12,7 @@ howToUse:
   - "抽出したいシートを選択（キーワード検索または手動選択）"
   - "「抽出」ボタンをクリック"
   - "新しいExcelファイルをダウンロード"
-externalLink: ""
+externalLink: "https://excel-sheet-pick.vercel.app/"
 screenshots: []
 ---
 
