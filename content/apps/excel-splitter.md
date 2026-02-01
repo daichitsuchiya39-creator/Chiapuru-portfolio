@@ -1,7 +1,7 @@
 ---
 title: "Excel Sheet Pic"
 description: "シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。"
-image: ""
+image: "/images/app_image/Excel-Sheet-Pic.png"
 features:
   - "キーワード検索でシートを抽出 - シート名に含まれるキーワードで一括抽出"
   - "手動選択で複数シート抽出 - 必要なシートを自由に選んで抽出"
