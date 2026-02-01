@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About',
@@ -28,7 +29,7 @@ const timeline = [
     description: 'ChatGPTやClaudeなど大規模言語モデルの学習を開始。AIを活用したツール開発に挑戦。',
   },
   {
-    year: '2020',
+    year: '2023',
     title: 'プログラミング学習開始',
     description: 'Pythonから学習を開始。業務効率化のためのスクリプト作成からスタート。',
   },
@@ -41,8 +42,15 @@ export default function AboutPage() {
       <section className="bg-gradient-to-br from-primary-50 to-white py-16 dark:from-gray-900 dark:to-gray-800">
         <div className="container-custom">
           <div className="mx-auto max-w-3xl text-center">
-            <div className="mb-6 inline-flex h-32 w-32 items-center justify-center rounded-full bg-primary-100 text-6xl dark:bg-primary-900/30">
-              👋
+            <div className="mb-6 inline-block h-40 w-40 overflow-hidden rounded-full ring-4 ring-primary-200 dark:ring-primary-800">
+              <Image
+                src="/images/IMG_Chiapuru-prof-20220819.jpg"
+                alt="Chiapuru"
+                width={160}
+                height={160}
+                className="h-full w-full object-cover object-top"
+                priority
+              />
             </div>
             <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
               Hi, I&apos;m Chiapuru
@@ -65,7 +73,7 @@ export default function AboutPage() {
                 経営・財務分析など細かい数字を扱う仕事をしてきた経験から、業務効率化への強い関心があります。
               </p>
               <p>
-                2020年にPythonを学び始め、最初は業務効率化のための小さなスクリプトを書いていました。
+                2023年にPythonを学び始め、最初は業務効率化のための小さなスクリプトを書いていました。
                 最近はAIの学習を始め、ChatGPTやClaudeなどを活用したツール開発に取り組んでいます。
                 このサイト自体もClaude Codeを使って開発しました。
               </p>
