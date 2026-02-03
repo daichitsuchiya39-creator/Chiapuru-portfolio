@@ -11,7 +11,7 @@ howToUse:
   - ".xlsmファイルをドラッグ&ドロップ（またはクリックして選択）"
   - "「マクロを除去してダウンロード」ボタンをクリック"
   - "マクロが除去された.xlsxファイルをダウンロード"
-externalLink: ""
+externalLink: "https://macro-remover-for-excel.vercel.app/"
 screenshots: []
 ---
 
