@@ -5,6 +5,18 @@ import { getAllPosts } from '@/lib/blog';
 export const metadata: Metadata = {
   title: 'Blog',
   description: '個人開発、Excel自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+  openGraph: {
+    title: 'Blog | Chiapuru',
+    description: '個人開発、Excel自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+    images: [
+      {
+        url: 'https://chiapuru.com/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Chiapuru Blog',
+      },
+    ],
+  },
 };
 
 export default async function BlogPage() {

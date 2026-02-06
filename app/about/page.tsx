@@ -5,6 +5,18 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: 'About',
   description: 'Chiapuruのプロフィール。AIを活用した業務効率化ツールを開発する個人開発者。',
+  openGraph: {
+    title: 'About | Chiapuru',
+    description: 'Chiapuruのプロフィール。AIを活用した業務効率化ツールを開発する個人開発者。',
+    images: [
+      {
+        url: 'https://chiapuru.com/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Chiapuru About',
+      },
+    ],
+  },
 };
 
 const skills = [

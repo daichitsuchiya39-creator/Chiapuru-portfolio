@@ -25,11 +25,20 @@ export const metadata: Metadata = {
     siteName: 'Chiapuru',
     title: 'Chiapuru - 仕事を効率化するツール',
     description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    images: [
+      {
+        url: 'https://chiapuru.com/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Chiapuru - AI × 個人開発者',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Chiapuru - 仕事を効率化するツール',
     description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    images: ['https://chiapuru.com/api/og'],
   },
   robots: {
     index: true,

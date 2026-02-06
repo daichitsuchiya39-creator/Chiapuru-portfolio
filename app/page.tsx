@@ -1,8 +1,25 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import AppCard from '@/components/AppCard';
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
+
+export const metadata: Metadata = {
+  title: 'Home',
+  openGraph: {
+    title: 'Chiapuru - 仕事を効率化するツール',
+    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    images: [
+      {
+        url: 'https://chiapuru.com/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Chiapuru',
+      },
+    ],
+  },
+};
 
 const featuredApps = [
   {

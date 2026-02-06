@@ -5,6 +5,18 @@ import { getAllApps } from '@/lib/apps';
 export const metadata: Metadata = {
   title: 'Apps',
   description: 'Chiapuruが開発した業務効率化ツールの一覧。Excel自動化やWebアプリケーションなど。',
+  openGraph: {
+    title: 'Apps | Chiapuru',
+    description: 'Chiapuruが開発した業務効率化ツールの一覧。Excel自動化やWebアプリケーションなど。',
+    images: [
+      {
+        url: 'https://chiapuru.com/api/og',
+        width: 1200,
+        height: 630,
+        alt: 'Chiapuru Apps',
+      },
+    ],
+  },
 };
 
 const staticApps = [

@@ -28,6 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: post.excerpt,
       type: 'article',
       publishedTime: post.date,
+      images: [
+        {
+          url: 'https://chiapuru.com/api/og',
+          width: 1200,
+          height: 630,
+          alt: 'Chiapuru',
+        },
+      ],
     },
   };
 }

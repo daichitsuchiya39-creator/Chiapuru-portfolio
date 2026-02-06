@@ -55,6 +55,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: `${app.title} | Chiapuru`,
       description: app.description,
+      images: [
+        {
+          url: 'https://chiapuru.com/api/og',
+          width: 1200,
+          height: 630,
+          alt: 'Chiapuru',
+        },
+      ],
     },
   };
 }
