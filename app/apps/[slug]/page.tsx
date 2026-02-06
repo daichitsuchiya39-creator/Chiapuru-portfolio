@@ -242,13 +242,13 @@ export default async function AppDetailPage({ params }: Props) {
 
       {/* Disclaimer Section */}
       {app.disclaimer && (
-        <section className="bg-red-50 py-16 dark:bg-red-950/20">
+        <section className="bg-gray-50 py-16 dark:bg-gray-800/30">
           <div className="container-custom">
             <div className="mx-auto max-w-3xl">
               <div className="flex gap-4">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-red-100 dark:bg-red-900/30">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-200 dark:bg-gray-700">
                   <svg
-                    className="h-5 w-5 text-red-600 dark:text-red-400"
+                    className="h-5 w-5 text-gray-600 dark:text-gray-300"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -260,8 +260,8 @@ export default async function AppDetailPage({ params }: Props) {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="mb-3 font-bold text-red-900 dark:text-red-100">免責事項</h3>
-                  <p className="text-sm text-red-800 dark:text-red-200">{app.disclaimer}</p>
+                  <h3 className="mb-3 font-bold text-gray-900 dark:text-gray-100">免責事項</h3>
+                  <p className="text-sm text-gray-700 dark:text-gray-300">{app.disclaimer}</p>
                 </div>
               </div>
             </div>
