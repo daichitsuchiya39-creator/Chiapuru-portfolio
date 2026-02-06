@@ -11,7 +11,7 @@ howToUse:
   - "2つ以上のExcelファイル（.xlsx, .xlsm）をドラッグ&ドロップ"
   - "各ファイルのシート一覧を確認"
   - "「統合してダウンロード」ボタンをクリック"
-externalLink: "https://sheet-merge.vercel.app/"
+externalLink: "https://sheet-marge.vercel.app/"
 screenshots: []
 ---
 
