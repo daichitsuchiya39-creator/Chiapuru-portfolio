@@ -15,6 +15,7 @@ export interface AppData {
   howToUse?: string[];
   externalLink?: string;
   screenshots?: string[];
+  disclaimer?: string;
   contentHtml?: string;
 }
 
@@ -41,6 +42,7 @@ export async function getAllApps(): Promise<AppData[]> {
         howToUse: data.howToUse || [],
         externalLink: data.externalLink || '',
         screenshots: data.screenshots || [],
+        disclaimer: data.disclaimer || '',
       };
     });
 
@@ -69,6 +71,7 @@ export async function getAppBySlug(slug: string): Promise<AppData | null> {
     howToUse: data.howToUse || [],
     externalLink: data.externalLink || '',
     screenshots: data.screenshots || [],
+    disclaimer: data.disclaimer || '',
     contentHtml,
   };
 }

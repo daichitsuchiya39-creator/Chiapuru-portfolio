@@ -14,6 +14,7 @@ howToUse:
   - "新しいExcelファイルをダウンロード"
 externalLink: "https://excel-sheet-pick.vercel.app/"
 screenshots: []
+disclaimer: "本ツールは提供される情報の正確性、完全性、有用性について何の保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用者様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。"
 ---
 
 ## Excel Sheet Picとは
