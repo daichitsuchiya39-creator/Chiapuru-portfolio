@@ -7,9 +7,14 @@ import { getAllPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Home',
+  description:
+    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。Excel自動化、Python、AI活用など。',
   openGraph: {
+    type: 'website',
     title: 'Chiapuru - 仕事を効率化するツール',
     description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    url: 'https://chiapuru.com',
+    siteName: 'Chiapuru',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -18,6 +23,12 @@ export const metadata: Metadata = {
         alt: 'Chiapuru',
       },
     ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Chiapuru - 仕事を効率化するツール',
+    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    images: ['https://chiapuru.com/api/og'],
   },
 };
 
