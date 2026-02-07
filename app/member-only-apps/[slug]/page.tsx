@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getAppBySlug } from '@/lib/member-only-apps';
+import FavoriteButton from '@/components/FavoriteButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -62,7 +63,12 @@ export default async function MemberAppPage({ params }: Props) {
           </Link>
 
           <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">{app.title}</h1>
-          <p className="text-lg text-gray-600 dark:text-gray-400">{app.description}</p>
+          <div className="flex items-center gap-4">
+            <p className="text-lg text-gray-600 dark:text-gray-400">{app.description}</p>
+          </div>
+          <div className="mt-4">
+            <FavoriteButton contentType="member-only-app" slug={slug} />
+          </div>
         </div>
       </section>
 

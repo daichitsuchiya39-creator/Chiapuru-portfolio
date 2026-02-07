@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getPostBySlug } from '@/lib/member-only-blog';
+import FavoriteButton from '@/components/FavoriteButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -67,8 +68,13 @@ export default async function MemberBlogPostPage({ params }: Props) {
             Back to Member Blog
           </Link>
 
-          <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white">{post.title}</h1>
-          <p className="text-gray-600 dark:text-gray-400">{post.date}</p>
+          <div className="mb-4 flex items-center gap-4">
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">{post.title}</h1>
+          </div>
+          <div className="flex items-center gap-4">
+            <p className="text-gray-600 dark:text-gray-400">{post.date}</p>
+            <FavoriteButton contentType="member-only-blog" slug={slug} />
+          </div>
 
           {post.tags && post.tags.length > 0 && (
             <div className="mt-4 flex flex-wrap gap-2">

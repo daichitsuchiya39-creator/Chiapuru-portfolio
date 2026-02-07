@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPostSlugs } from '@/lib/blog';
+import FavoriteButton from '@/components/FavoriteButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -105,6 +106,7 @@ export default async function BlogPostPage({ params }: Props) {
           <div className="mx-auto max-w-3xl">
             <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
               <div className="flex items-center gap-4">
+                <FavoriteButton contentType="blog" slug={slug} />
                 <span className="text-gray-600 dark:text-gray-400">Share:</span>
                 <a
                   href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`https://chiapuru.com/blog/${slug}`)}`}

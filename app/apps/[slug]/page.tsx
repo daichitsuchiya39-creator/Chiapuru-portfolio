@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAppBySlug, getAllAppSlugs } from '@/lib/apps';
+import FavoriteButton from '@/components/FavoriteButton';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -101,7 +102,10 @@ export default async function AppDetailPage({ params }: Props) {
               <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
                 {app.title}
               </h1>
-              <p className="mb-8 text-lg text-gray-600 dark:text-gray-300">{app.description}</p>
+              <p className="mb-4 text-lg text-gray-600 dark:text-gray-300">{app.description}</p>
+              <div className="mb-8">
+                <FavoriteButton contentType="app" slug={slug} />
+              </div>
 
               {app.externalLink && (
                 <a
