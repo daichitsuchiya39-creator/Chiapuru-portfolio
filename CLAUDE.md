@@ -250,21 +250,12 @@ SUPABASE_SERVICE_ROLE_KEY=（Supabase ダッシュボードから取得）
 
 ### 残作業（優先順）
 
-#### 🔴 本番デプロイ前必須タスク
-1. **Vercel 環境変数登録** (`docs/VERCEL_DEPLOYMENT.md` ステップ1)
-   - 7つの環境変数を Vercel Project Settings に登録
-   - Production 環境のみ設定
-2. **Google OAuth 本番設定** (`docs/VERCEL_DEPLOYMENT.md` ステップ2)
-   - `https://chiapuru.com/api/auth/callback/google` を callback URL に追加
-3. **Supabase 本番テーブル確認**
-   - 本番プロジェクトに `memberships` テーブル存在確認
-   - `docs/supabase-setup.sql` を本番環境で実行（済みの場合はスキップ）
-4. **Vercel 自動デプロイ**
-   - GitHub main ブランチに push → Vercel が自動でデプロイ
-5. **本番環境テスト**
-   - `https://chiapuru.com` でログイン確認
-   - `/member-only-blog` でメンバー限定コンテンツ確認
-   - Supabase `memberships` テーブルにレコード作成確認
+#### ~~🔴 本番デプロイ前必須タスク~~ ✅ 完了（2026-02-07）
+1. ~~**Vercel 環境変数登録**~~ ✅
+2. ~~**Google OAuth 本番設定**~~ ✅
+3. ~~**Supabase 本番テーブル確認**~~ ✅
+4. ~~**Vercel 自動デプロイ**~~ ✅
+5. ~~**本番環境テスト**~~ ✅ ログイン・メンバーシップ自動作成・ダッシュボード表示確認済み
 
 #### 🟡 本番デプロイ後のコンテンツ拡充
 1. **メンバー限定ブログ記事追加**
@@ -341,11 +332,18 @@ npm run dev
 - [x] ビルド成功（`npm run build`）
 - [x] コミット・プッシュ完了
 - [x] ドキュメント作成完了
-- [ ] **Vercel 本番環境変数登録（引き継ぎ先で実行）**
-- [ ] **本番デプロイ（引き継ぎ先で実行）**
-- [ ] **本番環境テスト（引き継ぎ先で実行）**
+- [x] **Vercel 本番環境変数登録** ✅ 2026-02-07 完了
+- [x] **本番デプロイ** ✅ 2026-02-07 完了
+- [x] **本番環境テスト** ✅ 2026-02-07 Google OAuth ログイン・メンバーシップ自動作成確認済み
 - [ ] メンバー限定コンテンツ追加（随時）
 - [ ] 課金機能統合（将来）
+
+### 本番デプロイ時の追加修正（2026-02-07）
+
+- `lib/supabaseClient.ts`: Supabase クライアントを遅延初期化に変更（ビルド時の env vars 未設定エラー回避）
+- `lib/membership.ts`: `supabaseAdmin` → `getSupabaseAdmin()` に変更
+- Vercel 環境変数 7 つ登録済み（Production）
+- Google Cloud Console に本番 callback URL 追加済み
 
 ---
 *Last updated: 2026-02-07*
