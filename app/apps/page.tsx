@@ -5,6 +5,8 @@ import { getFavoritesByEmail } from '@/lib/favorites';
 import AppCard from '@/components/AppCard';
 import { getAllApps } from '@/lib/apps';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Apps',
   description: 'Chiapuruが開発した業務効率化ツールの一覧。Excel自動化やWebアプリケーションなど。',

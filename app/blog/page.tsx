@@ -5,6 +5,8 @@ import { getFavoritesByEmail } from '@/lib/favorites';
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Blog',
   description: '個人開発、Excel自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
