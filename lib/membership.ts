@@ -1,4 +1,4 @@
-import { supabaseAdmin } from './supabaseClient';
+import { getSupabaseAdmin } from './supabaseClient';
 
 export type Membership = {
   id: string;
@@ -11,7 +11,7 @@ export type Membership = {
 export async function getMembershipByEmail(email: string): Promise<Membership | null> {
   if (!email) return null;
   try {
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await getSupabaseAdmin()
       .from('memberships')
       .select('*')
       .eq('email', email)
@@ -36,7 +36,7 @@ export async function createOrGetMembership(email: string): Promise<Membership |
   if (!email) return null;
   try {
     // Check if membership already exists
-    const { data, error } = await supabaseAdmin
+    const { data, error } = await getSupabaseAdmin()
       .from('memberships')
       .select('*')
       .eq('email', email)
@@ -55,7 +55,7 @@ export async function createOrGetMembership(email: string): Promise<Membership |
     }
 
     // Create new free membership
-    const { data: newData, error: insertError } = await supabaseAdmin
+    const { data: newData, error: insertError } = await getSupabaseAdmin()
       .from('memberships')
       .insert([{ email, tier: 'free' }])
       .select()
