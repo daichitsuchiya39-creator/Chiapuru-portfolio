@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getServerSession } from 'next-auth';
@@ -6,6 +7,20 @@ import { getAppBySlug } from '@/lib/member-only-apps';
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const app = await getAppBySlug(slug);
+
+  if (!app) {
+    return { title: 'Tool Not Found' };
+  }
+
+  return {
+    title: `${app.title} | Member Tools | Chiapuru`,
+    description: app.description,
+  };
 }
 
 export default async function MemberAppPage({ params }: Props) {

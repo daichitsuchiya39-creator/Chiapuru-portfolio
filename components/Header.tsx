@@ -17,6 +17,11 @@ export default function Header() {
     { href: '/about', label: 'About' },
   ];
 
+  const memberLinks = [
+    { href: '/member-only-blog', label: 'Member Blog' },
+    { href: '/member-only-apps', label: 'Member Tools' },
+  ];
+
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-700 dark:bg-gray-900/80">
       <nav className="container-custom">
@@ -36,6 +41,17 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className="text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
+              >
+                {link.label}
+              </Link>
+            ))}
+
+            {/* Member Links (only when signed in) */}
+            {session && memberLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
               >
                 {link.label}
               </Link>
@@ -164,14 +180,47 @@ export default function Header() {
               </Link>
             ))}
 
-            <div className="mt-2">
+            {/* Member Links in mobile menu (only when signed in) */}
+            {session && (
+              <div className="mt-2 border-t border-gray-200 pt-2 dark:border-gray-700">
+                <p className="py-1 text-xs font-semibold uppercase text-gray-400 dark:text-gray-500">Members</p>
+                {memberLinks.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="block py-2 text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+
+            <div className="mt-2 border-t border-gray-200 pt-2 dark:border-gray-700">
               {session ? (
-                <div className="flex items-center gap-2">
-                  <Link href="/dashboard" className="block py-2 text-gray-600">Dashboard</Link>
-                  <button onClick={() => signOut()} className="block py-2 text-gray-600">Sign out</button>
+                <div className="space-y-1">
+                  <Link
+                    href="/dashboard"
+                    className="block py-2 text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={() => signOut()}
+                    className="block py-2 text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300"
+                  >
+                    Sign out
+                  </button>
                 </div>
               ) : (
-                <button onClick={() => signIn('google')} className="block py-2 text-gray-600">Sign in</button>
+                <button
+                  onClick={() => signIn('google')}
+                  className="block py-2 text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300"
+                >
+                  Sign in
+                </button>
               )}
             </div>
           </div>
