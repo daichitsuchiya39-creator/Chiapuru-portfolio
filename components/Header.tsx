@@ -3,10 +3,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import { useTheme } from './ThemeProvider';
+import { useSession, signIn, signOut } from 'next-auth/react';
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { data: session } = useSession();
 
   const navLinks = [
     { href: '/', label: 'Home' },
@@ -28,7 +30,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-8 md:flex">
+          <div className="hidden items-center gap-6 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -65,6 +67,31 @@ export default function Header() {
                 </svg>
               )}
             </button>
+
+            {/* Auth Buttons */}
+            {session ? (
+              <div className="flex items-center gap-2">
+                <Link
+                  href="/dashboard"
+                  className="rounded-md px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={() => signOut()}
+                  className="rounded-md bg-primary-500 px-3 py-1 text-sm text-white hover:bg-primary-600"
+                >
+                  Sign out
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => signIn('google')}
+                className="rounded-md bg-primary-500 px-3 py-1 text-sm text-white hover:bg-primary-600"
+              >
+                Sign in
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -136,6 +163,17 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+
+            <div className="mt-2">
+              {session ? (
+                <div className="flex items-center gap-2">
+                  <Link href="/dashboard" className="block py-2 text-gray-600">Dashboard</Link>
+                  <button onClick={() => signOut()} className="block py-2 text-gray-600">Sign out</button>
+                </div>
+              ) : (
+                <button onClick={() => signIn('google')} className="block py-2 text-gray-600">Sign in</button>
+              )}
+            </div>
           </div>
         )}
       </nav>
