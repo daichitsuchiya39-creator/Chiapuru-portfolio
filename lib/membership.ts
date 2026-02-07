@@ -36,7 +36,7 @@ export async function createOrGetMembership(email: string): Promise<Membership |
   if (!email) return null;
   try {
     // Check if membership already exists
-    let { data, error } = await supabaseAdmin
+    const { data, error } = await supabaseAdmin
       .from('memberships')
       .select('*')
       .eq('email', email)
