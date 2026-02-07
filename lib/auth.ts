@@ -1,7 +1,7 @@
 import GoogleProvider from 'next-auth/providers/google';
 import type { NextAuthOptions, Session, User } from 'next-auth';
 import type { JWT } from 'next-auth/jwt';
-import { createOrGetMembership } from './membership';
+import { createOrGetMembership, getMembershipByEmail } from './membership';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -22,10 +22,21 @@ export const authOptions: NextAuthOptions = {
       }
       return true;
     },
+    async jwt({ token, trigger }) {
+      // Fetch membership tier on sign-in
+      if (trigger === 'signIn' && token.email) {
+        const membership = await getMembershipByEmail(token.email);
+        token.membershipTier = membership?.tier || 'free';
+      }
+      return token;
+    },
     async session({ session, token }: { session: Session; token: JWT }) {
       // attach token.sub as id if present
       if (token && token.sub && session.user) {
         (session.user as User & { id: string }).id = token.sub;
+      }
+      if (token.membershipTier) {
+        session.membershipTier = token.membershipTier;
       }
       return session;
     },

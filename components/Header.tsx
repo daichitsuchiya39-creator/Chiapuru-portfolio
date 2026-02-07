@@ -17,11 +17,6 @@ export default function Header() {
     { href: '/about', label: 'About' },
   ];
 
-  const memberLinks = [
-    { href: '/member-only-blog', label: 'Member Blog' },
-    { href: '/member-only-apps', label: 'Member Tools' },
-  ];
-
   return (
     <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md dark:border-gray-700 dark:bg-gray-900/80">
       <nav className="container-custom">
@@ -41,17 +36,6 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className="text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-400"
-              >
-                {link.label}
-              </Link>
-            ))}
-
-            {/* Member Links (only when signed in) */}
-            {session && memberLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
               >
                 {link.label}
               </Link>
@@ -86,7 +70,12 @@ export default function Header() {
 
             {/* Auth Buttons */}
             {session ? (
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-3">
+                {session.membershipTier && (
+                  <span className="rounded-full bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700 dark:bg-accent-900/30 dark:text-accent-400">
+                    {session.membershipTier}
+                  </span>
+                )}
                 <Link
                   href="/dashboard"
                   className="rounded-md px-3 py-1 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200"
@@ -180,26 +169,16 @@ export default function Header() {
               </Link>
             ))}
 
-            {/* Member Links in mobile menu (only when signed in) */}
-            {session && (
-              <div className="mt-2 border-t border-gray-200 pt-2 dark:border-gray-700">
-                <p className="py-1 text-xs font-semibold uppercase text-gray-400 dark:text-gray-500">Members</p>
-                {memberLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    className="block py-2 text-accent-600 transition-colors hover:text-accent-700 dark:text-accent-400 dark:hover:text-accent-300"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-              </div>
-            )}
-
             <div className="mt-2 border-t border-gray-200 pt-2 dark:border-gray-700">
               {session ? (
                 <div className="space-y-1">
+                  {session.membershipTier && (
+                    <div className="py-2">
+                      <span className="rounded-full bg-accent-100 px-2.5 py-0.5 text-xs font-semibold text-accent-700 dark:bg-accent-900/30 dark:text-accent-400">
+                        {session.membershipTier}
+                      </span>
+                    </div>
+                  )}
                   <Link
                     href="/dashboard"
                     className="block py-2 text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-300"

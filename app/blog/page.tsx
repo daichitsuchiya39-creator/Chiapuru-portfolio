@@ -4,6 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { getFavoritesByEmail } from '@/lib/favorites';
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
+import { getAllMemberPosts } from '@/lib/member-only-blog';
 
 export const dynamic = 'force-dynamic';
 
@@ -32,7 +33,17 @@ export default async function BlogPage() {
   const favoritedSlugs = new Set(
     favorites.filter((f) => f.content_type === 'blog').map((f) => f.content_slug)
   );
-  const posts = await getAllPosts();
+  const [posts, memberPosts] = await Promise.all([getAllPosts(), getAllMemberPosts()]);
+
+  const allPosts = [
+    ...posts.map((p) => ({ ...p, memberOnly: false })),
+    ...memberPosts.map((p) => ({ ...p, memberOnly: true })),
+  ].sort((a, b) => {
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    const orderA = 'order' in a ? (a.order as number) ?? 0 : 0;
+    const orderB = 'order' in b ? (b.order as number) ?? 0 : 0;
+    return orderB - orderA;
+  });
 
   return (
     <>
@@ -51,17 +62,18 @@ export default async function BlogPage() {
       {/* Blog Posts */}
       <section className="py-16">
         <div className="container-custom">
-          {posts.length > 0 ? (
+          {allPosts.length > 0 ? (
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {posts.map((post) => (
+              {allPosts.map((post) => (
                 <BlogCard
-                  key={post.slug}
+                  key={`${post.memberOnly ? 'member-' : ''}${post.slug}`}
                   title={post.title}
                   date={post.date}
                   excerpt={post.excerpt}
                   slug={post.slug}
                   tags={post.tags}
                   isFavorited={favoritedSlugs.has(post.slug)}
+                  memberOnly={post.memberOnly}
                 />
               ))}
             </div>

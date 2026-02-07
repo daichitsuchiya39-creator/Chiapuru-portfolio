@@ -4,6 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { getFavoritesByEmail } from '@/lib/favorites';
 import AppCard from '@/components/AppCard';
 import { getAllApps } from '@/lib/apps';
+import { getAllMemberApps } from '@/lib/member-only-apps';
 
 export const dynamic = 'force-dynamic';
 
@@ -48,8 +49,13 @@ export default async function AppsPage() {
   const favoritedSlugs = new Set(
     favorites.filter((f) => f.content_type === 'app').map((f) => f.content_slug)
   );
-  const apps = await getAllApps();
-  const displayApps = apps.length > 0 ? apps : staticApps;
+  const [apps, memberApps] = await Promise.all([getAllApps(), getAllMemberApps()]);
+  const regularApps = apps.length > 0 ? apps : staticApps;
+
+  const allApps = [
+    ...regularApps.map((a) => ({ ...a, memberOnly: false })),
+    ...memberApps.map((a) => ({ ...a, image: '', memberOnly: true })),
+  ];
 
   return (
     <>
@@ -71,15 +77,16 @@ export default async function AppsPage() {
       <section className="py-16">
         <div className="container-custom">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {displayApps.map((app, index) => (
+            {allApps.map((app, index) => (
               <AppCard
-                key={app.slug || index}
+                key={`${app.memberOnly ? 'member-' : ''}${app.slug || index}`}
                 title={app.title}
                 description={app.description}
                 slug={app.slug}
                 image={app.image}
                 comingSoon={'comingSoon' in app ? app.comingSoon : false}
                 isFavorited={favoritedSlugs.has(app.slug)}
+                memberOnly={app.memberOnly}
               />
             ))}
           </div>
