@@ -7,9 +7,10 @@ interface AppCardProps {
   slug: string;
   image?: string;
   comingSoon?: boolean;
+  isFavorited?: boolean;
 }
 
-export default function AppCard({ title, description, slug, image, comingSoon }: AppCardProps) {
+export default function AppCard({ title, description, slug, image, comingSoon, isFavorited }: AppCardProps) {
   if (comingSoon) {
     return (
       <div className="card opacity-70">
@@ -28,7 +29,14 @@ export default function AppCard({ title, description, slug, image, comingSoon }:
   }
 
   return (
-    <Link href={`/apps/${slug}`} className="card group block">
+    <Link href={`/apps/${slug}`} className="card group relative block">
+      {isFavorited && (
+        <span className="absolute right-4 top-4 z-10 text-red-500" aria-label="Favorited">
+          <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+        </span>
+      )}
       <div className="relative mb-4 aspect-video overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-700">
         {image ? (
           <Image

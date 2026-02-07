@@ -1,5 +1,6 @@
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
+import { getFavoritesByEmail } from '@/lib/favorites';
 import { getAllMemberApps } from '@/lib/member-only-apps';
 import Link from 'next/link';
 
@@ -24,7 +25,13 @@ export default async function MemberAppsPage() {
     );
   }
 
-  const apps = await getAllMemberApps();
+  const [apps, favorites] = await Promise.all([
+    getAllMemberApps(),
+    getFavoritesByEmail(session.user.email),
+  ]);
+  const favoritedSlugs = new Set(
+    favorites.filter((f) => f.content_type === 'member-only-app').map((f) => f.content_slug)
+  );
 
   return (
     <>
@@ -47,8 +54,15 @@ export default async function MemberAppsPage() {
                 <Link
                   key={app.slug}
                   href={`/member-only-apps/${app.slug}`}
-                  className="group rounded-lg border border-gray-200 p-6 transition-colors hover:border-primary-500 dark:border-gray-700 dark:hover:border-primary-400"
+                  className="group relative rounded-lg border border-gray-200 p-6 transition-colors hover:border-primary-500 dark:border-gray-700 dark:hover:border-primary-400"
                 >
+                  {favoritedSlugs.has(app.slug) && (
+                    <span className="absolute right-4 top-4 text-red-500">
+                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                    </span>
+                  )}
                   <h2 className="mb-2 text-xl font-semibold group-hover:text-primary-500">{app.title}</h2>
                   <p className="mb-3 text-gray-700 dark:text-gray-300">{app.description}</p>
                   {app.features && app.features.length > 0 && (

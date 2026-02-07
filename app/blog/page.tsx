@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { getFavoritesByEmail } from '@/lib/favorites';
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
 
@@ -20,6 +23,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  const session = await getServerSession(authOptions);
+  const favorites = session?.user?.email
+    ? await getFavoritesByEmail(session.user.email)
+    : [];
+  const favoritedSlugs = new Set(
+    favorites.filter((f) => f.content_type === 'blog').map((f) => f.content_slug)
+  );
   const posts = await getAllPosts();
 
   return (
@@ -49,6 +59,7 @@ export default async function BlogPage() {
                   excerpt={post.excerpt}
                   slug={post.slug}
                   tags={post.tags}
+                  isFavorited={favoritedSlugs.has(post.slug)}
                 />
               ))}
             </div>

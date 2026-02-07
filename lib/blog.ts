@@ -12,6 +12,7 @@ export interface Post {
   date: string;
   excerpt: string;
   tags: string[];
+  order?: number;
   content?: string;
   contentHtml?: string;
 }
@@ -37,11 +38,15 @@ export async function getAllPosts(): Promise<Post[]> {
         date: data.date || '',
         excerpt: data.excerpt || content.slice(0, 150) + '...',
         tags: data.tags || [],
+        order: data.order ?? 0,
         content,
       };
     });
 
-  return allPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return allPosts.sort((a, b) => {
+    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    return (b.order ?? 0) - (a.order ?? 0);
+  });
 }
 
 // slugに一致するファイルを探す（日付プレフィックス付き/なし両方対応）

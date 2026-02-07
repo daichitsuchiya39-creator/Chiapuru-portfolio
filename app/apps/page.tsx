@@ -1,4 +1,7 @@
 import type { Metadata } from 'next';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+import { getFavoritesByEmail } from '@/lib/favorites';
 import AppCard from '@/components/AppCard';
 import { getAllApps } from '@/lib/apps';
 
@@ -36,6 +39,13 @@ const staticApps = [
 ];
 
 export default async function AppsPage() {
+  const session = await getServerSession(authOptions);
+  const favorites = session?.user?.email
+    ? await getFavoritesByEmail(session.user.email)
+    : [];
+  const favoritedSlugs = new Set(
+    favorites.filter((f) => f.content_type === 'app').map((f) => f.content_slug)
+  );
   const apps = await getAllApps();
   const displayApps = apps.length > 0 ? apps : staticApps;
 
@@ -67,6 +77,7 @@ export default async function AppsPage() {
                 slug={app.slug}
                 image={app.image}
                 comingSoon={'comingSoon' in app ? app.comingSoon : false}
+                isFavorited={favoritedSlugs.has(app.slug)}
               />
             ))}
           </div>
