@@ -1,5 +1,6 @@
 import GoogleProvider from 'next-auth/providers/google';
-import type { NextAuthOptions } from 'next-auth';
+import type { NextAuthOptions, Session, User } from 'next-auth';
+import type { JWT } from 'next-auth/jwt';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -14,10 +15,10 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     // Keep defaults; we'll read session info on server and query Supabase for membership
-    async session({ session, token }) {
+    async session({ session, token }: { session: Session; token: JWT }) {
       // attach token.sub as id if present
-      if (token && (token as any).sub) {
-        (session as any).user.id = (token as any).sub;
+      if (token && token.sub && session.user) {
+        (session.user as User & { id: string }).id = token.sub;
       }
       return session;
     },

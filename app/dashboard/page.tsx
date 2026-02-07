@@ -1,9 +1,9 @@
-import { getServerSession } from 'next-auth/next';
+import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getMembershipByEmail } from '@/lib/membership';
 
 export default async function DashboardPage() {
-  const session = await getServerSession(authOptions as any);
+  const session = await getServerSession(authOptions);
 
   if (!session?.user?.email) {
     // Redirect to sign-in if not authenticated
