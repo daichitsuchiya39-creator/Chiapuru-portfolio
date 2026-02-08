@@ -1,7 +1,7 @@
 ---
 title: "推しコイン実力チェッカー"
 description: "あなたの推しコインは本当に強い？主要銘柄（BTC・ETH・SOLなど）と比較して、相対的な実力を丸裸にするWebアプリです。"
-image: ""
+image: "/images/app_image/My-crypto-watch.png"
 features:
   - "推しコイン vs 主要銘柄の相対強度を一目で把握 - BTC・ETH・SOLなどと比較してどれだけ強いかを数値化"
   - "複数の時間軸で分析 - 1時間・24時間・7日間・30日間の変動率で多角的にチェック"
