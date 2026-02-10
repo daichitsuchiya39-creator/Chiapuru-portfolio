@@ -29,10 +29,11 @@ export default function BackstagePage() {
 
           <div className="space-y-8 text-gray-700 leading-relaxed dark:text-gray-300">
             <p>ここは、chiapuru.com の舞台裏です。</p>
+            <p>メンバー登録をしてくださった方だけに見えています。</p>
 
             <div className="space-y-1">
               <p>表では、</p>
-              <p>事務仕事を少し楽にするためのツールや、</p>
+              <p>普段の仕事を少し楽にするためのツールや、</p>
               <p>考える前提を整えるための小さな仕組みを置いています。</p>
             </div>
 
