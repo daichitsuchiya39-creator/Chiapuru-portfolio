@@ -1,6 +1,6 @@
 ---
 title: "Excel Sheet Pic - Excelシート分割アプリを公開しました"
-date: "2026-1-31"
+date: "2026-01-31"
 excerpt: "Excelシートを簡単に分割できるWebアプリ「Excel Sheet Pic」をRenderで公開。現在の課題と今後の展望について。"
 tags: ["Flask", "Python", "Excel", "Render", "開発記録"]
 ---

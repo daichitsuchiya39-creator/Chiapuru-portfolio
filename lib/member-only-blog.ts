@@ -41,7 +41,7 @@ export async function getAllMemberPosts(): Promise<MemberPost[]> {
       };
     });
 
-  return allPosts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return allPosts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 function findPostFile(slug: string): string | null {

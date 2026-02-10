@@ -1,6 +1,6 @@
 ---
 title: "chiapuru.comにメンバーシップ機能を実装しました"
-date: "2026-2-7"
+date: "2026-02-07"
 excerpt: "Google OAuth + Supabaseを使った無料会員登録機能をClaude Codeと一緒に実装。ログインからメンバー限定コンテンツの保護まで、1日で本番デプロイまで完了しました。"
 tags: ["Next.js", "開発記録", "AI", "Claude Code"]
 order: 1

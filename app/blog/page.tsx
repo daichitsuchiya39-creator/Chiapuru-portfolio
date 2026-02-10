@@ -39,7 +39,9 @@ export default async function BlogPage() {
     ...posts.map((p) => ({ ...p, memberOnly: false })),
     ...memberPosts.map((p) => ({ ...p, memberOnly: true })),
   ].sort((a, b) => {
-    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    if (dateA !== dateB) return dateB - dateA;
     const orderA = 'order' in a ? (a.order as number) ?? 0 : 0;
     const orderB = 'order' in b ? (b.order as number) ?? 0 : 0;
     return orderB - orderA;

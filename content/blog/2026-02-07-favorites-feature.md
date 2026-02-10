@@ -1,6 +1,6 @@
 ---
 title: "お気に入り機能を追加しました - ブログ記事やアプリを保存できるように"
-date: "2026-2-7"
+date: "2026-02-07"
 excerpt: "会員ユーザーがブログ記事やアプリをお気に入り登録できる機能を実装。Supabase + Next.js API Routesで、ハートボタンひとつで保存・ダッシュボードで一覧表示できます。"
 tags: ["Next.js", "Supabase", "開発記録", "Claude Code"]
 order: 2

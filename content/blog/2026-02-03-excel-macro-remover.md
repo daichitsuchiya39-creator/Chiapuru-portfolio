@@ -1,6 +1,6 @@
 ---
 title: "Excel Macro Remover - マクロ除去ツールを公開しました"
-date: "2026-2-3"
+date: "2026-02-03"
 excerpt: "Excelのマクロ付きファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換するツールを公開。セキュリティ対策としても便利です。"
 tags: ["Flask", "Python", "Excel", "セキュリティ", "開発記録"]
 ---
