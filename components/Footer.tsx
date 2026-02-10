@@ -56,6 +56,14 @@ export default function Footer() {
                   Privacy Policy
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/backstage"
+                  className="text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400"
+                >
+                  Backstage
+                </Link>
+              </li>
             </ul>
           </div>
 
