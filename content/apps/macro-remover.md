@@ -1,5 +1,6 @@
 ---
 title: "Excel Macro Remover"
+category: "excel"
 description: "マクロ付きExcelファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換。書式やデータはそのまま保持されます。"
 image: "/images/app_image/Excel-Macro-Remover.png"
 features:

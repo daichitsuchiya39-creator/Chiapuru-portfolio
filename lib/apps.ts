@@ -10,6 +10,7 @@ export interface AppData {
   slug: string;
   title: string;
   description: string;
+  category?: string;
   image?: string;
   features: string[];
   howToUse?: string[];
@@ -18,6 +19,27 @@ export interface AppData {
   disclaimer?: string;
   contentHtml?: string;
 }
+
+export interface CategoryInfo {
+  slug: string;
+  name: string;
+  description: string;
+  icon: string;
+  appCount: number;
+}
+
+const CATEGORY_META: Record<string, { name: string; description: string; icon: string }> = {
+  excel: {
+    name: 'Excel Tools',
+    description: 'Excelファイルの分割・統合・変換など、Excel作業を効率化するツール群',
+    icon: '📊',
+  },
+  crypto: {
+    name: 'Crypto',
+    description: '暗号資産の分析・比較ツール',
+    icon: '💰',
+  },
+};
 
 export async function getAllApps(): Promise<AppData[]> {
   if (!fs.existsSync(appsDirectory)) {
@@ -37,6 +59,7 @@ export async function getAllApps(): Promise<AppData[]> {
         slug,
         title: data.title || '',
         description: data.description || '',
+        category: data.category || '',
         image: data.image || '',
         features: data.features || [],
         howToUse: data.howToUse || [],
@@ -66,6 +89,7 @@ export async function getAppBySlug(slug: string): Promise<AppData | null> {
     slug,
     title: data.title || '',
     description: data.description || '',
+    category: data.category || '',
     image: data.image || '',
     features: data.features || [],
     howToUse: data.howToUse || [],
@@ -83,4 +107,28 @@ export async function getAllAppSlugs(): Promise<string[]> {
 
   const fileNames = fs.readdirSync(appsDirectory);
   return fileNames.filter((fileName) => fileName.endsWith('.md')).map((fileName) => fileName.replace(/\.md$/, ''));
+}
+
+export async function getAppsByCategory(category: string): Promise<AppData[]> {
+  const allApps = await getAllApps();
+  return allApps.filter((app) => app.category === category);
+}
+
+export async function getAllCategories(): Promise<CategoryInfo[]> {
+  const allApps = await getAllApps();
+  const categoryCounts = new Map<string, number>();
+
+  for (const app of allApps) {
+    if (app.category) {
+      categoryCounts.set(app.category, (categoryCounts.get(app.category) || 0) + 1);
+    }
+  }
+
+  return Array.from(categoryCounts.entries()).map(([slug, count]) => ({
+    slug,
+    name: CATEGORY_META[slug]?.name || slug,
+    description: CATEGORY_META[slug]?.description || '',
+    icon: CATEGORY_META[slug]?.icon || '📦',
+    appCount: count,
+  }));
 }

@@ -1,5 +1,6 @@
 ---
 title: "Sheet Merge"
+category: "excel"
 description: "複数のExcelファイルのシートを1つのファイルに統合。各ファイルのシートをまとめて管理・共有できます。"
 image: "/images/app_image/SheetMarge.png"
 features:

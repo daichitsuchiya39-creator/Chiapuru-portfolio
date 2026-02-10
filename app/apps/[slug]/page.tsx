@@ -10,10 +10,15 @@ interface Props {
 }
 
 // Default app data for excel-splitter if no markdown file exists
+const CATEGORY_LABELS: Record<string, { href: string; label: string }> = {
+  excel: { href: '/apps/excel', label: 'Back to Excel Tools' },
+};
+
 const defaultExcelSplitter = {
   slug: 'excel-splitter',
   title: 'Excel Sheet Extractor',
   description: 'シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。',
+  category: 'excel',
   image: '',
   features: [
     'キーワード検索でシートを抽出 - シート名に含まれるキーワードで一括抽出',
@@ -82,19 +87,23 @@ export default async function AppDetailPage({ params }: Props) {
     notFound();
   }
 
+  const backLink = app.category && CATEGORY_LABELS[app.category]
+    ? CATEGORY_LABELS[app.category]
+    : { href: '/apps', label: 'Back to Apps' };
+
   return (
     <>
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-primary-50 to-white py-16 dark:from-gray-900 dark:to-gray-800">
         <div className="container-custom">
           <Link
-            href="/apps"
+            href={backLink.href}
             className="mb-6 inline-flex items-center text-gray-600 transition-colors hover:text-primary-500 dark:text-gray-400 dark:hover:text-primary-400"
           >
             <svg className="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back to Apps
+            {backLink.label}
           </Link>
 
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">

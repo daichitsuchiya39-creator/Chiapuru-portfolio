@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { getFavoritesByEmail } from '@/lib/favorites';
+import CategoryCard from '@/components/CategoryCard';
 import AppCard from '@/components/AppCard';
-import { getAllApps } from '@/lib/apps';
+import { getAllCategories } from '@/lib/apps';
 import { getAllMemberApps } from '@/lib/member-only-apps';
 
 export const dynamic = 'force-dynamic';
@@ -25,22 +26,6 @@ export const metadata: Metadata = {
   },
 };
 
-const staticApps = [
-  {
-    slug: 'excel-splitter',
-    title: 'Excel Sheet Extractor',
-    description: 'シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。',
-    image: '',
-  },
-  {
-    slug: '',
-    title: 'Coming Soon...',
-    description: '次のツールを開発中です。お楽しみに！',
-    image: '',
-    comingSoon: true,
-  },
-];
-
 export default async function AppsPage() {
   const session = await getServerSession(authOptions);
   const favorites = session?.user?.email
@@ -49,13 +34,11 @@ export default async function AppsPage() {
   const favoritedSlugs = new Set(
     favorites.filter((f) => f.content_type === 'app').map((f) => f.content_slug)
   );
-  const [apps, memberApps] = await Promise.all([getAllApps(), getAllMemberApps()]);
-  const regularApps = apps.length > 0 ? apps : staticApps;
 
-  const allApps = [
-    ...regularApps.map((a) => ({ ...a, memberOnly: false })),
-    ...memberApps.map((a) => ({ ...a, image: '', memberOnly: true })),
-  ];
+  const [categories, memberApps] = await Promise.all([
+    getAllCategories(),
+    getAllMemberApps(),
+  ]);
 
   return (
     <>
@@ -73,25 +56,45 @@ export default async function AppsPage() {
         </div>
       </section>
 
-      {/* Apps Grid */}
+      {/* Categories Grid */}
       <section className="py-16">
         <div className="container-custom">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {allApps.map((app, index) => (
-              <AppCard
-                key={`${app.memberOnly ? 'member-' : ''}${app.slug || index}`}
-                title={app.title}
-                description={app.description}
-                slug={app.slug}
-                image={app.image}
-                comingSoon={'comingSoon' in app ? app.comingSoon : false}
-                isFavorited={favoritedSlugs.has(app.slug)}
-                memberOnly={app.memberOnly}
+            {categories.map((cat) => (
+              <CategoryCard
+                key={cat.slug}
+                slug={cat.slug}
+                name={cat.name}
+                description={cat.description}
+                icon={cat.icon}
+                appCount={cat.appCount}
               />
             ))}
           </div>
         </div>
       </section>
+
+      {/* Member-Only Apps */}
+      {memberApps.length > 0 && (
+        <section className="bg-gray-50 py-16 dark:bg-gray-800/50">
+          <div className="container-custom">
+            <h2 className="section-title text-center">Member-Only Apps</h2>
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              {memberApps.map((app) => (
+                <AppCard
+                  key={`member-${app.slug}`}
+                  title={app.title}
+                  description={app.description}
+                  slug={app.slug}
+                  image=""
+                  isFavorited={favoritedSlugs.has(app.slug)}
+                  memberOnly={true}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Request Section */}
       <section className="bg-gray-50 py-16 dark:bg-gray-800/50">
