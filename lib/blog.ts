@@ -44,7 +44,9 @@ export async function getAllPosts(): Promise<Post[]> {
     });
 
   return allPosts.sort((a, b) => {
-    if (a.date !== b.date) return a.date < b.date ? 1 : -1;
+    const dateA = new Date(a.date).getTime();
+    const dateB = new Date(b.date).getTime();
+    if (dateA !== dateB) return dateB - dateA;
     return (b.order ?? 0) - (a.order ?? 0);
   });
 }
