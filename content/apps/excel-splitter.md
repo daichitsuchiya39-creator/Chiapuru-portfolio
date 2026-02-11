@@ -28,6 +28,12 @@ Excel Sheet Picは、大量のシートを含むExcelファイルから、必要
 
 - [ExcelSheetPic ダウンロード（Windows）](/downloads/sheetpic/ExcelSheetPic-0.1.0-win-x64.zip)
 
+## ダウンロード版（Mac）
+
+ローカル完結で使えるMac版です。
+
+- [ExcelSheetPic ダウンロード（Mac）](/downloads/sheetpic/ExcelSheetPic-0.1.0-mac.zip)
+
 ## こんな方におすすめ
 
 - 複数のシートがあるExcelファイルを分割したい
