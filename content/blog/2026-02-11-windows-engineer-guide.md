@@ -734,3 +734,4 @@ Windowsをエンジニアとして使いこなすには：
 **関連記事**:
 - [Macをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/2026-02-11-mac-engineer-guide)
 - [スタートアップの技術選定：2026年版最強スタック](/blog/2026-02-11-startup-tech-stack)
+- [dotfilesリポジトリの作り方完全ガイド【Mac/Windows対応】](/blog/2026-02-12-dotfiles-guide)
