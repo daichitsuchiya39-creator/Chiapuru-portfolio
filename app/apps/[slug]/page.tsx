@@ -223,6 +223,17 @@ export default async function AppDetailPage({ params }: Props) {
         </section>
       )}
 
+      {/* Content Section */}
+      {app.contentHtml && (
+        <section className="py-16">
+          <div className="container-custom">
+            <article className="prose prose-lg prose-gray mx-auto max-w-3xl dark:prose-invert prose-headings:font-bold prose-a:text-primary-500 prose-a:no-underline hover:prose-a:underline">
+              <div dangerouslySetInnerHTML={{ __html: app.contentHtml }} />
+            </article>
+          </div>
+        </section>
+      )}
+
       {/* CTA Section */}
       <section className="py-16">
         <div className="container-custom">
