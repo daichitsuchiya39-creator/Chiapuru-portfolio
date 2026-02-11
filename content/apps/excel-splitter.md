@@ -15,24 +15,17 @@ howToUse:
   - "新しいExcelファイルをダウンロード"
 externalLink: "https://excel-sheet-pick.vercel.app/"
 screenshots: []
+downloadLinks:
+  - label: "Windows版"
+    path: "sheetpic/ExcelSheetPic-0.1.0-win-x64.zip"
+  - label: "Mac版"
+    path: "sheetpic/ExcelSheetPic-0.1.0-mac.zip"
 disclaimer: "本ツールは提供される情報の正確性、完全性、有用性について何の保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用者様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。"
 ---
 
 ## Excel Sheet Picとは
 
 Excel Sheet Picは、大量のシートを含むExcelファイルから、必要なシートだけを簡単に抽出できるWebアプリケーションです。
-
-## ダウンロード版（Windows）
-
-ローカル完結で使えるWindows版です。
-
-- [ExcelSheetPic ダウンロード（Windows）](/downloads/sheetpic/ExcelSheetPic-0.1.0-win-x64.zip)
-
-## ダウンロード版（Mac）
-
-ローカル完結で使えるMac版です。
-
-- [ExcelSheetPic ダウンロード（Mac）](/downloads/sheetpic/ExcelSheetPic-0.1.0-mac.zip)
 
 ## こんな方におすすめ
 

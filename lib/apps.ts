@@ -6,6 +6,11 @@ import html from 'remark-html';
 
 const appsDirectory = path.join(process.cwd(), 'content/apps');
 
+export interface DownloadLink {
+  label: string;
+  path: string;
+}
+
 export interface AppData {
   slug: string;
   title: string;
@@ -16,6 +21,7 @@ export interface AppData {
   howToUse?: string[];
   externalLink?: string;
   screenshots?: string[];
+  downloadLinks?: DownloadLink[];
   disclaimer?: string;
   contentHtml?: string;
 }
@@ -65,6 +71,7 @@ export async function getAllApps(): Promise<AppData[]> {
         howToUse: data.howToUse || [],
         externalLink: data.externalLink || '',
         screenshots: data.screenshots || [],
+        downloadLinks: data.downloadLinks || [],
         disclaimer: data.disclaimer || '',
       };
     });
@@ -95,6 +102,7 @@ export async function getAppBySlug(slug: string): Promise<AppData | null> {
     howToUse: data.howToUse || [],
     externalLink: data.externalLink || '',
     screenshots: data.screenshots || [],
+    downloadLinks: data.downloadLinks || [],
     disclaimer: data.disclaimer || '',
     contentHtml,
   };
