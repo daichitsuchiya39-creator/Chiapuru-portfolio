@@ -19,7 +19,7 @@ Excel Sheet Picのデスクトップアプリ版を作るために、初めてRu
 
 詳しい開発の流れは別記事にまとめています。
 
-→ [Excel Sheet PicをTauriでデスクトップアプリ化した話](/blog/2026-02-11-excel-sheetpic-tauri-devlog)
+→ [Excel Sheet PicをTauriでデスクトップアプリ化した話](/blog/excel-sheetpic-tauri-devlog)
 
 ## 最初の壁：所有権と借用
 
@@ -150,4 +150,4 @@ Tauriのおかげで、UIはいつものWeb技術で書きつつ、バックエ�
 
 Rustが気になっているけど踏み出せない方には、Tauriアプリ開発から入るのをおすすめします。Rustを書く量が限定的なので、無理なく始められます。
 
-→ 実際のTauriアプリ開発の流れは [こちらの記事](/blog/2026-02-11-excel-sheetpic-tauri-devlog) にまとめています。
+→ 実際のTauriアプリ開発の流れは [こちらの記事](/blog/excel-sheetpic-tauri-devlog) にまとめています。

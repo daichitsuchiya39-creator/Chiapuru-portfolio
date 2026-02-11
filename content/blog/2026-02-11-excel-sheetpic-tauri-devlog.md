@@ -129,7 +129,7 @@ npm run tauri build
 
 Python・VBAとの違いや、Rust初心者として感じたことは別記事に詳しくまとめています。
 
-→ [Python・VBA畑の自分が初めてRustを書いて感じたこと](/blog/2026-02-11-first-rust-experience)
+→ [Python・VBA畑の自分が初めてRustを書いて感じたこと](/blog/first-rust-experience)
 
 ## ハマりポイントまとめ
 

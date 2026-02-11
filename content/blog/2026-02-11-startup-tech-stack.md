@@ -745,7 +745,7 @@ GraphQLが有効なケース：
 ---
 
 **関連記事**:
-- [Macをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/2026-02-11-mac-engineer-guide)
-- [Windowsをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/2026-02-11-windows-engineer-guide)
-- [dotfilesリポジトリの作り方完全ガイド【Mac/Windows対応】](/blog/2026-02-12-dotfiles-guide)
-- [Claude APIを活用した業務自動化【Python実践ガイド】](/blog/2026-02-12-claude-api-automation)
+- [Macをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/mac-engineer-guide)
+- [Windowsをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/windows-engineer-guide)
+- [dotfilesリポジトリの作り方完全ガイド【Mac/Windows対応】](/blog/dotfiles-guide)
+- [Claude APIを活用した業務自動化【Python実践ガイド】](/blog/claude-api-automation)

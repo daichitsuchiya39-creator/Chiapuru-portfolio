@@ -889,7 +889,7 @@ Claude APIを活用した業務自動化のポイント:
 ---
 
 **関連記事**:
-- [Macをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/2026-02-11-mac-engineer-guide)
-- [Windowsをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/2026-02-11-windows-engineer-guide)
-- [スタートアップの技術選定：2026年版最強スタック](/blog/2026-02-11-startup-tech-stack)
-- [dotfilesリポジトリの作り方完全ガイド【Mac/Windows対応】](/blog/2026-02-12-dotfiles-guide)
+- [Macをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/mac-engineer-guide)
+- [Windowsをエンジニアとして使いこなす完全ガイド【2026年版】](/blog/windows-engineer-guide)
+- [スタートアップの技術選定：2026年版最強スタック](/blog/startup-tech-stack)
+- [dotfilesリポジトリの作り方完全ガイド【Mac/Windows対応】](/blog/dotfiles-guide)
