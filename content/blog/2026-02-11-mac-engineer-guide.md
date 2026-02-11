@@ -1,8 +1,8 @@
 ---
 title: "Macをエンジニアとして使いこなす完全ガイド【2026年版】"
 date: "2026-02-11"
-excerpt: "Mac購入初日から実践できるエンジニア向けセットアップガイド。Homebrew、iTerm2、Raycastなどの必須ツールから、dotfilesによる環境管理まで徹底解説。"
-tags: ["Mac", "開発環境", "ツール", "セットアップ", "生産性"]
+excerpt: "Mac購入初日から実践できるエンジニア向けセットアップガイド。Homebrew、iTerm2/WezTerm、Claude Code、AquaVoiceなどの必須ツールから、dotfilesによる環境管理まで徹底解説。"
+tags: ["Mac", "開発環境", "ツール", "セットアップ", "生産性", "AI"]
 ---
 
 # Macをエンジニアとして使いこなす完全ガイド【2026年版】
@@ -114,6 +114,65 @@ source ~/.zshrc
   - どこからでも瞬時にターミナルを呼び出せる
 - **テーマ**: Preferences > Profiles > Colors で好みのテーマを選択（Dracula、Nordなどが人気）
 
+### iTerm2の代替：WezTerm（上級者向け）
+
+iTerm2に慣れてきたら、GPU高速描画対応の**WezTerm**も検討してみてください。Rust製で高速、Luaで柔軟にカスタマイズできます。
+
+```bash
+# WezTermインストール
+brew install --cask wezterm
+```
+
+**WezTermの魅力**:
+- **GPU描画**: 大量ログ出力でもスムーズに表示
+- **Lua設定**: `.wezterm.lua` で全設定をコードで管理
+- **内蔵マルチプレクサ**: tmux不要でペイン分割・タブ管理が可能
+- **クロスプラットフォーム**: macOS / Linux / Windows で同じ設定を使い回せる
+
+**基本設定（`~/.wezterm.lua`）**:
+
+```lua
+local wezterm = require 'wezterm'
+local config = wezterm.config_builder()
+
+-- フォント設定
+config.font = wezterm.font('JetBrains Mono', { weight = 'Medium' })
+config.font_size = 14.0
+
+-- カラースキーム
+config.color_scheme = 'Tokyo Night'
+
+-- ウィンドウ設定
+config.window_decorations = "RESIZE"
+config.window_padding = {
+  left = 10, right = 10, top = 10, bottom = 10,
+}
+
+-- タブバー（1タブなら非表示）
+config.hide_tab_bar_if_only_one_tab = true
+
+-- キーバインド
+config.keys = {
+  -- Cmd+D で縦分割
+  {
+    key = 'd', mods = 'CMD',
+    action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+  },
+  -- Cmd+Shift+D で横分割
+  {
+    key = 'd', mods = 'CMD|SHIFT',
+    action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+  },
+}
+
+return config
+```
+
+**iTerm2からの移行ポイント**:
+- 設定がLuaファイル1つで完結 → dotfilesで管理しやすい
+- iTerm2のホットキー機能は別途設定が必要
+- Oh My Zsh等のシェル設定はそのまま使える
+
 ### 3. Gitの初期設定（所要時間：15分）
 
 ```bash
@@ -211,6 +270,26 @@ brew install --cask maccy
 - エラーメッセージをコピー → Claude/ChatGPTに投げる → 解決策をコピー → ターミナルで実行
 - APIキー、設定値などを一時保存
 
+### AquaVoice（AI音声入力）
+
+AIを活用した高精度な音声入力ツールです。コードのコメント、ドキュメント作成、チャット返信などをハンズフリーで行えます。
+
+**インストール**: AquaVoice公式サイト（withaqua.com）からダウンロード
+
+**主な特徴**:
+- **高精度AI認識**: 技術用語や専門用語も正確に認識
+- **どのアプリでも使える**: エディタ、Slack、ブラウザ等、入力フィールドがあればどこでも
+- **句読点・改行の自動挿入**: 自然な文章を自動で整形
+- **多言語対応**: 日本語・英語の切り替えもスムーズ
+
+**活用シーン**:
+- コードレビューのコメント記入
+- GitのコミットメッセージやPR説明文の作成
+- Slackやメールの返信
+- ドキュメント・ブログ記事の下書き
+
+**Tips**: 手が疲れた時やアイデアをすばやくメモしたい時に特に効果的。タイピングと音声入力を使い分けることで、作業効率が大きく向上します。
+
 ## 開発環境のセットアップ
 
 ### Node.jsのバージョン管理（nodenv）
@@ -268,6 +347,59 @@ brew install --cask cursor
 - `tree`: ディレクトリ構造を視覚化
 - `jq`: JSON整形・抽出
 
+### Claude Code（AIコーディングアシスタント）
+
+Claude Codeは、Anthropicが提供するターミナルベースのAI開発アシスタントです。プロジェクト全体を理解し、コードの生成・修正・レビューを対話的に行えます。
+
+```bash
+# Claude Codeインストール（Node.js 18以上が必要）
+npm install -g @anthropic-ai/claude-code
+```
+
+**基本的な使い方**:
+
+```bash
+# プロジェクトディレクトリで起動
+cd ~/projects/my-app
+claude
+
+# 起動後、自然言語で指示
+# 例: 「このプロジェクトの構造を説明して」
+# 例: 「ログイン機能を追加して」
+# 例: 「このバグを修正して」
+```
+
+**CLAUDE.mdでプロジェクト設定**:
+
+プロジェクトルートに `CLAUDE.md` を作成すると、Claude Codeがプロジェクトの文脈を理解した上で提案してくれます。
+
+```markdown
+# プロジェクト名
+
+## 技術スタック
+- Next.js 15, TypeScript, Tailwind CSS
+
+## コード規約
+- Server Components優先
+- 型定義を厳密に
+
+## コマンド
+- `npm run dev` - 開発サーバー
+- `npm run build` - ビルド
+```
+
+**主な機能**:
+- **コード生成**: 自然言語で機能を説明するだけでコードを生成
+- **バグ修正**: エラーメッセージを伝えるだけで原因を特定・修正
+- **リファクタリング**: 既存コードの改善提案と実行
+- **テスト作成**: テストコードの自動生成
+- **Git操作**: コミットメッセージの作成やPR作成の支援
+
+**実務での活用Tips**:
+- **CLAUDE.md を充実させる**: プロジェクトの技術スタックや規約を記述しておくと、より的確な提案が得られる
+- **小さなタスクから始める**: バグ修正や単一機能の追加から試して、徐々に大きなタスクを任せる
+- **レビュー意識を持つ**: 生成されたコードは必ず確認し、理解した上でマージする
+
 ## Brewfileで環境を管理
 
 インストールするパッケージを一元管理し、新しいMacでも一発でセットアップできます。
@@ -308,6 +440,7 @@ cask "rectangle"
 cask "maccy"
 cask "1password"
 cask "iterm2"
+cask "wezterm"
 ```
 
 **使い方**:
@@ -591,19 +724,24 @@ brew install --cask 1password
 - [ ] Raycastインストール・設定
 - [ ] Rectangleインストール
 - [ ] Maccyインストール
+- [ ] AquaVoiceインストール
 
-**5. アプリケーション（30分）**
+**5. AI開発ツール（15分）**
+- [ ] Claude Codeインストール
+- [ ] CLAUDE.md作成
+
+**6. アプリケーション（30分）**
 - [ ] Cursorインストール
 - [ ] Google Chromeインストール
 - [ ] Slackインストール
 - [ ] 1Passwordインストール
 
-**6. dotfiles（1時間）**
+**7. dotfiles（1時間）**
 - [ ] GitHubからクローン
 - [ ] シンボリックリンク作成
 - [ ] 設定読み込み
 
-**7. 動作確認（30分）**
+**8. 動作確認（30分）**
 - [ ] `git clone`できるか
 - [ ] `npm install`できるか
 - [ ] `docker compose up`できるか
@@ -617,10 +755,11 @@ brew install --cask 1password
 Macをエンジニアとして使いこなすには：
 
 1. **Homebrew**でパッケージ管理を一元化
-2. **iTerm2 + Oh My Zsh**でターミナル環境を快適化
-3. **Raycast + Rectangle + Maccy**で生産性を向上
-4. **dotfiles + Brewfile**で環境を再現可能に
-5. **ショートカット**を習得して操作を高速化
+2. **iTerm2 / WezTerm + Oh My Zsh**でターミナル環境を快適化
+3. **Raycast + Rectangle + Maccy + AquaVoice**で生産性を向上
+4. **Claude Code**でAIを活用した開発を実践
+5. **dotfiles + Brewfile**で環境を再現可能に
+6. **ショートカット**を習得して操作を高速化
 
 これらの設定により、開発効率は飛躍的に向上します。特にスタートアップや個人開発では、環境構築にかける時間を最小化し、プロダクト開発に集中できる環境が重要です。
 
