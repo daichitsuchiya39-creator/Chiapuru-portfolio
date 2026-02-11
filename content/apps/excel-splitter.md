@@ -22,6 +22,12 @@ disclaimer: "本ツールは提供される情報の正確性、完全性、有�
 
 Excel Sheet Picは、大量のシートを含むExcelファイルから、必要なシートだけを簡単に抽出できるWebアプリケーションです。
 
+## ダウンロード版（Windows）
+
+ローカル完結で使えるWindows版です。
+
+- [ExcelSheetPic ダウンロード（Windows）](/downloads/sheetpic/ExcelSheetPic-0.1.0-win-x64.zip)
+
 ## こんな方におすすめ
 
 - 複数のシートがあるExcelファイルを分割したい
