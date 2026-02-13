@@ -4,6 +4,7 @@ import Hero from '@/components/Hero';
 import AppCard from '@/components/AppCard';
 import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/blog';
+import { getAllNews } from '@/lib/news';
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -48,8 +49,9 @@ const featuredApps = [
 ];
 
 export default async function Home() {
-  const posts = await getAllPosts();
+  const [posts, news] = await Promise.all([getAllPosts(), getAllNews()]);
   const latestPosts = posts.slice(0, 3);
+  const latestNews = news.slice(0, 3);
 
   return (
     <>
@@ -95,8 +97,42 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Latest News Section */}
+      {latestNews.length > 0 && (
+        <section className="bg-gray-50 py-20 dark:bg-gray-800/50">
+          <div className="container-custom">
+            <div className="mb-12 text-center">
+              <h2 className="section-title">Latest News</h2>
+              <p className="text-gray-600 dark:text-gray-400">
+                リリース情報・アップデートのお知らせ
+              </p>
+            </div>
+
+            <div className="grid gap-8 md:grid-cols-3">
+              {latestNews.map((post) => (
+                <BlogCard
+                  key={post.slug}
+                  title={post.title}
+                  date={post.date}
+                  excerpt={post.excerpt}
+                  slug={post.slug}
+                  tags={post.tags}
+                  basePath="/news"
+                />
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <Link href="/news" className="btn-secondary">
+                View all news
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Latest Blog Posts Section */}
-      <section className="bg-gray-50 py-20 dark:bg-gray-800/50">
+      <section className="py-20">
         <div className="container-custom">
           <div className="mb-12 text-center">
             <h2 className="section-title">Latest Blog Posts</h2>

@@ -5,9 +5,9 @@ import { remark } from 'remark';
 import remarkGfm from 'remark-gfm';
 import html from 'remark-html';
 
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+const newsDirectory = path.join(process.cwd(), 'content/news');
 
-export interface Post {
+export interface NewsPost {
   slug: string;
   title: string;
   date: string;
@@ -18,18 +18,17 @@ export interface Post {
   contentHtml?: string;
 }
 
-export async function getAllPosts(): Promise<Post[]> {
-  if (!fs.existsSync(postsDirectory)) {
+export async function getAllNews(): Promise<NewsPost[]> {
+  if (!fs.existsSync(newsDirectory)) {
     return [];
   }
 
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs.readdirSync(newsDirectory);
   const allPosts = fileNames
     .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => {
-      // ファイル名から日付プレフィックス（YYYY-MM-DD-）を除去してslugを生成
       const slug = fileName.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
-      const fullPath = path.join(postsDirectory, fileName);
+      const fullPath = path.join(newsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const { data, content } = matter(fileContents);
 
@@ -40,11 +39,9 @@ export async function getAllPosts(): Promise<Post[]> {
         excerpt: data.excerpt || content.slice(0, 150) + '...',
         tags: data.tags || [],
         order: data.order ?? 0,
-        hidden: data.hidden || false,
         content,
       };
-    })
-    .filter((post) => !post.hidden);
+    });
 
   return allPosts.sort((a, b) => {
     const dateA = new Date(a.date).getTime();
@@ -54,22 +51,20 @@ export async function getAllPosts(): Promise<Post[]> {
   });
 }
 
-// slugに一致するファイルを探す（日付プレフィックス付き/なし両方対応）
-function findPostFile(slug: string): string | null {
-  if (!fs.existsSync(postsDirectory)) {
+function findNewsFile(slug: string): string | null {
+  if (!fs.existsSync(newsDirectory)) {
     return null;
   }
-  const fileNames = fs.readdirSync(postsDirectory);
-  // 日付プレフィックス付きファイルを優先して検索
+  const fileNames = fs.readdirSync(newsDirectory);
   const matchedFile = fileNames.find((fileName) => {
     const fileSlug = fileName.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
     return fileSlug === slug;
   });
-  return matchedFile ? path.join(postsDirectory, matchedFile) : null;
+  return matchedFile ? path.join(newsDirectory, matchedFile) : null;
 }
 
-export async function getPostBySlug(slug: string): Promise<Post | null> {
-  const fullPath = findPostFile(slug);
+export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
+  const fullPath = findNewsFile(slug);
 
   if (!fullPath) {
     return null;
@@ -92,12 +87,12 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
   };
 }
 
-export async function getAllPostSlugs(): Promise<string[]> {
-  if (!fs.existsSync(postsDirectory)) {
+export async function getAllNewsSlugs(): Promise<string[]> {
+  if (!fs.existsSync(newsDirectory)) {
     return [];
   }
 
-  const fileNames = fs.readdirSync(postsDirectory);
+  const fileNames = fs.readdirSync(newsDirectory);
   return fileNames
     .filter((fileName) => fileName.endsWith('.md'))
     .map((fileName) => fileName.replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, ''));

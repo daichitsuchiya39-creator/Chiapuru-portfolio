@@ -1,16 +1,30 @@
 import { getAllPosts } from '@/lib/blog';
+import { getAllNews } from '@/lib/news';
 
 export async function GET() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://chiapuru.com';
-  const posts = await getAllPosts();
+  const [posts, news] = await Promise.all([getAllPosts(), getAllNews()]);
 
-  const rssItems = posts
+  const blogItems = posts.map((post) => ({
+    ...post,
+    path: `/blog/${post.slug}`,
+  }));
+  const newsItems = news.map((post) => ({
+    ...post,
+    path: `/news/${post.slug}`,
+  }));
+
+  const allItems = [...blogItems, ...newsItems].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+  );
+
+  const rssItems = allItems
     .map(
       (post) => `
     <item>
       <title><![CDATA[${post.title}]]></title>
-      <link>${baseUrl}/blog/${post.slug}</link>
-      <guid isPermaLink="true">${baseUrl}/blog/${post.slug}</guid>
+      <link>${baseUrl}${post.path}</link>
+      <guid isPermaLink="true">${baseUrl}${post.path}</guid>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
       <description><![CDATA[${post.excerpt}]]></description>
     </item>
@@ -23,7 +37,7 @@ export async function GET() {
   <channel>
     <title>Chiapuru Blog</title>
     <link>${baseUrl}</link>
-    <description>個人開発、スプレッドシート自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。</description>
+    <description>個人開発、スプレッドシート自動化、技術記事やリリース情報を公開しています。</description>
     <language>ja</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>

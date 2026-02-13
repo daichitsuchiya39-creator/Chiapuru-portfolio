@@ -8,10 +8,11 @@ interface BlogCardProps {
   tags?: string[];
   isFavorited?: boolean;
   memberOnly?: boolean;
+  basePath?: string;
 }
 
-export default function BlogCard({ title, date, excerpt, slug, tags, isFavorited, memberOnly }: BlogCardProps) {
-  const href = memberOnly ? `/member-only-blog/${slug}` : `/blog/${slug}`;
+export default function BlogCard({ title, date, excerpt, slug, tags, isFavorited, memberOnly, basePath }: BlogCardProps) {
+  const href = memberOnly ? `/member-only-blog/${slug}` : `${basePath || '/blog'}/${slug}`;
   return (
     <Link href={href} className="card group relative block">
       <div className="absolute right-4 top-4 flex items-center gap-2">

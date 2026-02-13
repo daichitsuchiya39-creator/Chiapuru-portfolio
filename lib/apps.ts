@@ -40,11 +40,6 @@ const CATEGORY_META: Record<string, { name: string; description: string; icon: s
     description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群',
     icon: '📊',
   },
-  crypto: {
-    name: 'Crypto',
-    description: '暗号資産の分析・比較ツール',
-    icon: '💰',
-  },
 };
 
 export async function getAllApps(): Promise<AppData[]> {
