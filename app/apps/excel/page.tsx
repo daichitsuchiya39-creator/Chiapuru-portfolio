@@ -61,6 +61,36 @@ export default async function ExcelAppsPage() {
         </div>
       </section>
 
+      {/* Excel ToolBox Banner */}
+      <section className="py-8">
+        <div className="container-custom">
+          <Link
+            href="/apps/excel-toolbox"
+            className="group flex items-center justify-between rounded-xl border border-primary-200 bg-gradient-to-r from-primary-50 to-white p-6 transition-all hover:shadow-lg dark:border-primary-800 dark:from-primary-900/20 dark:to-gray-800"
+          >
+            <div>
+              <div className="mb-1 inline-flex items-center gap-1.5 rounded-full bg-green-100 px-3 py-0.5 text-xs font-medium text-green-700 dark:bg-green-900/30 dark:text-green-400">
+                Desktop App
+              </div>
+              <h3 className="text-lg font-bold text-gray-900 dark:text-white">
+                Excel ToolBox
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                3つのExcelツールをデスクトップアプリ（Windows / Mac）で使えます
+              </p>
+            </div>
+            <svg
+              className="h-5 w-5 shrink-0 text-primary-500 transition-transform group-hover:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </section>
+
       {/* Apps Grid */}
       <section className="py-16">
         <div className="container-custom">
