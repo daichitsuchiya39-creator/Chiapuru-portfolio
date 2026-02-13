@@ -7,5 +7,5 @@ export default withAuth({
 });
 
 export const config = {
-  matcher: ['/member-only/:path*', '/dashboard/:path*', '/backstage/:path*'],
+  matcher: ['/member-only/:path*', '/dashboard/:path*', '/backstage/:path*', '/apps/excel-toolbox'],
 };
