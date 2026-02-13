@@ -339,6 +339,53 @@ export default function ExcelToolBoxPage() {
         </div>
       </section>
 
+      {/* Download Section */}
+      <section className="py-16">
+        <div className="container-custom">
+          <h2 className="section-title text-center">ダウンロード</h2>
+          <div className="mx-auto max-w-xl">
+            <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+              <p className="mb-6 text-center text-sm text-gray-600 dark:text-gray-400">
+                3つのExcelツールがすべて入ったデスクトップアプリ
+              </p>
+              <div className="space-y-4">
+                {/* Windows */}
+                <a
+                  href="https://github.com/daichitsuchiya39-creator/excel-toolbox/releases/download/v0.1.0/Excel.Toolbox_0.1.0_x64-setup.exe"
+                  className="flex items-center justify-between rounded-xl border border-gray-200 p-4 transition-all hover:border-primary-300 hover:bg-primary-50 dark:border-gray-600 dark:hover:border-primary-700 dark:hover:bg-primary-900/20"
+                >
+                  <div className="flex items-center gap-3">
+                    <svg className="h-8 w-8 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3 12V6.75l8-1.25V12H3zm0 .5h8v6.5l-8-1.25V12.5zM11.5 12V5.35l9.5-1.6V12h-9.5zm0 .5h9.5v8.25l-9.5-1.6V12.5z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-900 dark:text-white">Windows版</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">v0.1.0 - x64 セットアップ (.exe)</p>
+                    </div>
+                  </div>
+                  <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                </a>
+
+                {/* Mac - Coming Soon */}
+                <div className="flex items-center justify-between rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-700/50">
+                  <div className="flex items-center gap-3">
+                    <svg className="h-8 w-8 text-gray-400" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
+                    </svg>
+                    <div>
+                      <p className="font-semibold text-gray-500 dark:text-gray-400">Mac版</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500">Coming Soon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-16">
         <div className="container-custom">
@@ -347,15 +394,13 @@ export default function ExcelToolBoxPage() {
               まずはWeb版で試してみませんか？
             </h2>
             <p className="mb-8 text-primary-100">
-              各ツールの詳細ページからWeb版をお試しいただけます。
-              <br />
-              気に入ったらデスクトップ版をダウンロードしてください。
+              インストール不要のWeb版で各ツールをお試しいただけます。
             </p>
             <Link
               href="/apps/excel"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 font-semibold text-primary-600 transition-all duration-200 hover:bg-gray-100"
             >
-              Excel Toolsを見る
+              Web版を試す
               <svg
                 className="ml-2 h-5 w-5"
                 fill="none"
@@ -366,7 +411,7 @@ export default function ExcelToolBoxPage() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M9 5l7 7-7 7"
+                  d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                 />
               </svg>
             </Link>
