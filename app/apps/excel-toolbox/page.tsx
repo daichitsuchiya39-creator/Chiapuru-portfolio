@@ -3,19 +3,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Excel ToolBox - デスクトップアプリ',
+  title: 'Sheet ToolBox - デスクトップアプリ',
   description:
-    'Excel作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。シート抽出・統合・マクロ除去をオフラインで高速処理。',
+    'スプレッドシート作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。シート抽出・統合・マクロ除去をオフラインで高速処理。',
   openGraph: {
-    title: 'Excel ToolBox | Chiapuru',
+    title: 'Sheet ToolBox | Chiapuru',
     description:
-      'Excel作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。',
+      'スプレッドシート作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'Excel ToolBox',
+        alt: 'Sheet ToolBox',
       },
     ],
   },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 const tools = [
   {
     slug: 'excel-splitter',
-    title: 'Excel Sheet Pic',
+    title: 'Sheet Pic',
     description:
       'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で効率的にシートを分割できます。',
     image: '/images/app_image/Excel-Sheet-Pic.png',
@@ -40,7 +40,7 @@ const tools = [
   },
   {
     slug: 'macro-remover',
-    title: 'Excel Macro Remover',
+    title: 'Macro Remover',
     description:
       'マクロ付きExcelファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換します。',
     image: '/images/app_image/Excel-Macro-Remover.png',
@@ -91,10 +91,10 @@ export default function ExcelToolBoxPage() {
               Desktop App - Windows / Mac 対応
             </div>
             <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-              Excel ToolBox
+              Sheet ToolBox
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-              Excel作業を効率化する3つのデスクトップアプリ。
+              スプレッドシート作業を効率化する3つのデスクトップアプリ。
               <br />
               オフラインで動作し、大容量ファイルも高速に処理できます。
             </p>
@@ -346,7 +346,7 @@ export default function ExcelToolBoxPage() {
           <div className="mx-auto max-w-xl">
             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800">
               <p className="mb-6 text-center text-sm text-gray-600 dark:text-gray-400">
-                3つのExcelツールがすべて入ったデスクトップアプリ
+                3つのツールがすべて入ったデスクトップアプリ
               </p>
               <div className="space-y-4">
                 {/* Windows */}

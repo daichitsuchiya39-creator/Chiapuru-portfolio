@@ -8,7 +8,7 @@ import { getAllPosts } from '@/lib/blog';
 export const metadata: Metadata = {
   title: 'Home',
   description:
-    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。Excel自動化、Python、AI活用など。',
+    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。スプレッドシート自動化、Python、AI活用など。',
   openGraph: {
     type: 'website',
     title: 'Chiapuru - 仕事を効率化するツール',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const featuredApps = [
   {
-    title: 'Excel Sheet Pic',
+    title: 'Sheet Pic',
     description: 'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で書式を崩さずに分割できます。',
     slug: 'excel-splitter',
     image: '/images/app_image/Excel-Sheet-Pic.png',

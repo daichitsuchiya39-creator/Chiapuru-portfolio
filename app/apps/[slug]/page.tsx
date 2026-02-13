@@ -12,12 +12,12 @@ interface Props {
 
 // Default app data for excel-splitter if no markdown file exists
 const CATEGORY_LABELS: Record<string, { href: string; label: string }> = {
-  excel: { href: '/apps/excel', label: 'Back to Excel Tools' },
+  excel: { href: '/apps/excel', label: 'Back to Spreadsheet Tools' },
 };
 
 const defaultExcelSplitter = {
   slug: 'excel-splitter',
-  title: 'Excel Sheet Extractor',
+  title: 'Sheet Pic',
   description: 'シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。',
   category: 'excel',
   image: '',

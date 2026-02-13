@@ -1,5 +1,5 @@
 ---
-title: "Excel Sheet Pic"
+title: "Sheet Pic"
 category: "excel"
 description: "シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。"
 image: "/images/app_image/Excel-Sheet-Pic.png"

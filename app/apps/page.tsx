@@ -11,10 +11,10 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Apps',
-  description: 'Chiapuruが開発した業務効率化ツールの一覧。Excel自動化やWebアプリケーションなど。',
+  description: 'Chiapuruが開発した業務効率化ツールの一覧。スプレッドシート自動化やWebアプリケーションなど。',
   openGraph: {
     title: 'Apps | Chiapuru',
-    description: 'Chiapuruが開発した業務効率化ツールの一覧。Excel自動化やWebアプリケーションなど。',
+    description: 'Chiapuruが開発した業務効率化ツールの一覧。スプレッドシート自動化やWebアプリケーションなど。',
     images: [
       {
         url: 'https://chiapuru.com/api/og',

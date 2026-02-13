@@ -9,17 +9,17 @@ import { getAppsByCategory } from '@/lib/apps';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Excel Tools',
-  description: 'Excelファイルの分割・統合・変換など、Excel作業を効率化するツール群。',
+  title: 'Spreadsheet Tools',
+  description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群。',
   openGraph: {
-    title: 'Excel Tools | Chiapuru',
-    description: 'Excelファイルの分割・統合・変換など、Excel作業を効率化するツール群。',
+    title: 'Spreadsheet Tools | Chiapuru',
+    description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群。',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'Excel Tools',
+        alt: 'Spreadsheet Tools',
       },
     ],
   },
@@ -52,16 +52,16 @@ export default async function ExcelAppsPage() {
           </Link>
           <div className="text-center">
             <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-              Excel Tools
+              Spreadsheet Tools
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-              Excelファイルの分割・統合・変換など、Excel作業を効率化するツール群
+              スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群
             </p>
           </div>
         </div>
       </section>
 
-      {/* Excel ToolBox Banner */}
+      {/* Sheet ToolBox Banner */}
       <section className="py-8">
         <div className="container-custom">
           <Link
@@ -73,10 +73,10 @@ export default async function ExcelAppsPage() {
                 Desktop App
               </div>
               <h3 className="text-lg font-bold text-gray-900 dark:text-white">
-                Excel ToolBox
+                Sheet ToolBox
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                3つのExcelツールをデスクトップアプリ（Windows / Mac）で使えます
+                3つのツールをデスクトップアプリ（Windows / Mac）で使えます
               </p>
             </div>
             <svg

@@ -10,10 +10,10 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: '個人開発、Excel自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+  description: '個人開発、スプレッドシート自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
   openGraph: {
     title: 'Blog | Chiapuru',
-    description: '個人開発、Excel自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+    description: '個人開発、スプレッドシート自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
     images: [
       {
         url: 'https://chiapuru.com/api/og',

@@ -36,8 +36,8 @@ export interface CategoryInfo {
 
 const CATEGORY_META: Record<string, { name: string; description: string; icon: string }> = {
   excel: {
-    name: 'Excel Tools',
-    description: 'Excelファイルの分割・統合・変換など、Excel作業を効率化するツール群',
+    name: 'Spreadsheet Tools',
+    description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群',
     icon: '📊',
   },
   crypto: {

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
     template: '%s | Chiapuru',
   },
   description:
-    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。Excel自動化、Python、AI活用など。',
-  keywords: ['個人開発', 'Excel自動化', 'Python', 'Flask', 'AI', 'ツール開発'],
+    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。スプレッドシート自動化、Python、AI活用など。',
+  keywords: ['個人開発', 'スプレッドシート自動化', 'Python', 'Flask', 'AI', 'ツール開発'],
   authors: [{ name: 'Chiapuru' }],
   creator: 'Chiapuru',
   openGraph: {

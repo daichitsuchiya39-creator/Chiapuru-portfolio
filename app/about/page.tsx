@@ -32,7 +32,7 @@ const skills = [
 const timeline = [
   {
     year: '2026',
-    title: 'Excel Sheet Pic & ポートフォリオサイト公開',
+    title: 'Sheet Pic & ポートフォリオサイト公開',
     description: 'ExcelシートWebアプリをRenderで公開。Claude Codeを使ってポートフォリオサイトも開発。',
   },
   {
