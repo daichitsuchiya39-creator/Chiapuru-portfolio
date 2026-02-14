@@ -18,25 +18,25 @@ const CATEGORY_LABELS: Record<string, { href: string; label: string }> = {
 const defaultExcelSplitter = {
   slug: 'excel-splitter',
   title: 'Sheet Pic',
-  description: 'シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。',
+  description: 'Extract specific sheets from spreadsheet files. Use keyword search or manual selection to split workbooks.',
   category: 'excel',
   image: '',
   features: [
-    'キーワード検索でシートを抽出 - シート名に含まれるキーワードで一括抽出',
-    '手動選択で複数シート抽出 - 必要なシートを自由に選んで抽出',
-    '書式を保持したまま新ファイル生成 - 元のフォーマットを崩さずに保存',
-    '複数ファイルの一括処理 - まとめて処理で作業効率アップ',
+    'Keyword search - Batch extract sheets by keyword match',
+    'Manual selection - Pick the sheets you need',
+    'Preserves formatting - Keeps styles, merged cells, and formulas intact',
+    'Batch processing - Process multiple files at once',
   ],
   howToUse: [
-    'Excelファイルをアップロード',
-    '抽出したいシートを選択（キーワード検索または手動選択）',
-    '「抽出」ボタンをクリック',
-    '新しいExcelファイルをダウンロード',
+    'Upload your spreadsheet file',
+    'Select sheets to extract (keyword search or manual selection)',
+    'Click "Extract"',
+    'Download the new spreadsheet file',
   ],
   externalLink: '',
   screenshots: [],
   disclaimer:
-    '本ツールは提供される情報の正確性、完全性、有用性についていかなる保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用ユーザー様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。',
+    'This tool is provided as-is without warranty of any kind. Please verify the accuracy of generated files yourself. The developer assumes no liability for any damages resulting from the use of this tool.',
 };
 
 export async function generateStaticParams() {
@@ -124,7 +124,7 @@ export default async function AppDetailPage({ params }: Props) {
                   rel="noopener noreferrer"
                   className="btn-primary"
                 >
-                  今すぐ使う
+                  Try it now
                   <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path
                       strokeLinecap="round"
@@ -244,8 +244,8 @@ export default async function AppDetailPage({ params }: Props) {
       <section className="py-16">
         <div className="container-custom">
           <div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 p-12 text-center text-white">
-            <h2 className="mb-4 text-3xl font-bold">{app.title}を使ってみよう</h2>
-            <p className="mb-8 text-primary-100">今すぐ無料でお試しいただけます。</p>
+            <h2 className="mb-4 text-3xl font-bold">Try {app.title}</h2>
+            <p className="mb-8 text-primary-100">Get started right away.</p>
             {app.externalLink ? (
               <a
                 href={app.externalLink}
@@ -264,7 +264,7 @@ export default async function AppDetailPage({ params }: Props) {
                 </svg>
               </a>
             ) : (
-              <p className="text-primary-100">リンクは近日公開予定です</p>
+              <p className="text-primary-100">Link coming soon</p>
             )}
           </div>
         </div>
@@ -290,7 +290,7 @@ export default async function AppDetailPage({ params }: Props) {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="mb-3 font-bold text-gray-900 dark:text-gray-100">免責事項</h3>
+                  <h3 className="mb-3 font-bold text-gray-900 dark:text-gray-100">Disclaimer</h3>
                   <p className="text-sm text-gray-700 dark:text-gray-300">{app.disclaimer}</p>
                 </div>
               </div>

@@ -7,11 +7,11 @@ import { remark } from 'remark';
 import html from 'remark-html';
 
 export const metadata: Metadata = {
-  title: 'プライバシーポリシー',
-  description: 'Chiapuruのプライバシーポリシーについて説明しています。',
+  title: 'Privacy Policy',
+  description: 'Privacy policy for Chiapuru and its tools.',
   openGraph: {
-    title: 'プライバシーポリシー | Chiapuru',
-    description: 'Chiapuruのプライバシーポリシーについて説明しています。',
+    title: 'Privacy Policy | Chiapuru',
+    description: 'Privacy policy for Chiapuru and its tools.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -52,7 +52,7 @@ export default async function PrivacyPage() {
             <svg className="mr-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            トップに戻る
+            Back to Home
           </Link>
 
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">

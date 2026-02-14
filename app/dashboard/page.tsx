@@ -99,7 +99,7 @@ export default async function DashboardPage() {
           </ul>
         ) : (
           <p className="text-gray-600 dark:text-gray-400">
-            お気に入りはまだありません。記事やアプリのページからハートボタンで追加できます。
+            No favorites yet. Tap the heart icon on any blog post or app to add it here.
           </p>
         )}
       </div>
@@ -114,7 +114,7 @@ export default async function DashboardPage() {
             Member Blog
           </h3>
           <p className="text-gray-600 dark:text-gray-400">
-            メンバー限定のブログ記事を読む
+            Read member-exclusive blog posts
           </p>
         </Link>
         <Link
@@ -125,7 +125,7 @@ export default async function DashboardPage() {
             Member Tools
           </h3>
           <p className="text-gray-600 dark:text-gray-400">
-            メンバー限定のツール・テンプレートを利用する
+            Access member-exclusive tools and templates
           </p>
         </Link>
       </div>

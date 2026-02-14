@@ -3,13 +3,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Sheet ToolBox - デスクトップアプリ',
+  title: 'Sheet ToolBox - Desktop App',
   description:
-    'スプレッドシート作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。シート抽出・統合・マクロ除去をオフラインで高速処理。',
+    'Three privacy-first desktop tools for spreadsheets (Windows / Mac). Extract sheets, merge files, and remove macros — all offline.',
   openGraph: {
     title: 'Sheet ToolBox | Chiapuru',
     description:
-      'スプレッドシート作業を効率化する3つのデスクトップアプリ（Windows / Mac対応）。',
+      'Three privacy-first desktop tools for spreadsheets (Windows / Mac).',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -26,25 +26,25 @@ const tools = [
     slug: 'excel-splitter',
     title: 'Sheet Pic',
     description:
-      'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で効率的にシートを分割できます。',
+      'Extract specific sheets from spreadsheet files. Use keyword search or manual selection to split workbooks efficiently.',
     image: '/images/app_image/Excel-Sheet-Pic.png',
-    features: ['キーワード検索で一括抽出', '手動選択で自由に抽出', '書式を完全保持'],
+    features: ['Batch extract by keyword', 'Manual sheet selection', 'Preserves formatting'],
   },
   {
     slug: 'sheet-merge',
     title: 'Sheet Merge',
     description:
-      '複数のExcelファイルのシートを1つのファイルに統合。各ファイルのシートをまとめて管理・共有できます。',
+      'Merge sheets from multiple spreadsheet files into one. Consolidate and share across teams.',
     image: '/images/app_image/SheetMarge.png',
-    features: ['複数ファイルを一括統合', 'シート名の自動調整', '書式・数式を維持'],
+    features: ['Batch merge multiple files', 'Auto-adjusts sheet names', 'Preserves formulas & formatting'],
   },
   {
     slug: 'macro-remover',
     title: 'Macro Remover',
     description:
-      'マクロ付きExcelファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換します。',
+      'Remove VBA macros from .xlsm files and convert them to safe .xlsx format.',
     image: '/images/app_image/Excel-Macro-Remover.png',
-    features: ['ワンクリックでマクロ除去', 'データ・書式を完全保持', 'ドラッグ&ドロップ対応'],
+    features: ['One-click macro removal', 'Preserves data & formatting', 'Drag & drop support'],
   },
 ];
 
@@ -88,15 +88,15 @@ export default function ExcelToolBoxPage() {
                   d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7"
                 />
               </svg>
-              Desktop App - Windows / Mac 対応
+              Desktop App — Windows / Mac
             </div>
             <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
               Sheet ToolBox
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-              スプレッドシート作業を効率化する3つのデスクトップアプリ。
+              Three desktop tools for spreadsheet workflows.
               <br />
-              オフラインで動作し、大容量ファイルも高速に処理できます。
+              Works offline. Handles large files at native speed.
             </p>
           </div>
         </div>
@@ -123,10 +123,10 @@ export default function ExcelToolBoxPage() {
                 </svg>
               </div>
               <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">
-                オフライン対応
+                Works Offline
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                インターネット不要。社内ネットワークでも安心して使えます
+                No internet required. Safe to use on corporate networks.
               </p>
             </div>
             <div className="text-center">
@@ -146,10 +146,10 @@ export default function ExcelToolBoxPage() {
                 </svg>
               </div>
               <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">
-                高速処理
+                Blazing Fast
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Rust + Tauriで構築。大容量ファイルもストレスなく処理
+                Built with Rust + Tauri. Handles large files without breaking a sweat.
               </p>
             </div>
             <div className="text-center">
@@ -169,10 +169,10 @@ export default function ExcelToolBoxPage() {
                 </svg>
               </div>
               <h3 className="mb-1 font-semibold text-gray-900 dark:text-white">
-                安全・安心
+                Privacy-First
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                ファイルは端末内で処理。外部サーバーへの送信はありません
+                All processing stays on your machine. Nothing is sent to external servers.
               </p>
             </div>
           </div>
@@ -182,7 +182,7 @@ export default function ExcelToolBoxPage() {
       {/* Tools Grid */}
       <section className="py-16">
         <div className="container-custom">
-          <h2 className="section-title text-center">3つのツール</h2>
+          <h2 className="section-title text-center">Three Tools, One App</h2>
           <div className="grid gap-8 lg:grid-cols-3">
             {tools.map((tool) => (
               <Link
@@ -236,7 +236,7 @@ export default function ExcelToolBoxPage() {
 
                   {/* CTA */}
                   <div className="flex items-center gap-1 font-medium text-primary-500 dark:text-primary-400">
-                    詳細・ダウンロード
+                    Details & Download
                     <svg
                       className="h-4 w-4 transition-transform group-hover:translate-x-1"
                       fill="none"
@@ -261,7 +261,7 @@ export default function ExcelToolBoxPage() {
       {/* Web版との比較 */}
       <section className="bg-gray-50 py-16 dark:bg-gray-800/50">
         <div className="container-custom">
-          <h2 className="section-title text-center">Web版との違い</h2>
+          <h2 className="section-title text-center">Web vs Desktop</h2>
           <div className="mx-auto max-w-3xl">
             <div className="overflow-hidden rounded-xl border border-gray-200 dark:border-gray-700">
               <table className="w-full text-sm">
@@ -271,62 +271,62 @@ export default function ExcelToolBoxPage() {
                       &nbsp;
                     </th>
                     <th className="px-6 py-3 text-center font-semibold text-gray-900 dark:text-white">
-                      Web版
+                      Web
                     </th>
                     <th className="px-6 py-3 text-center font-semibold text-primary-600 dark:text-primary-400">
-                      デスクトップ版
+                      Desktop
                     </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      インストール
+                      Installation
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      不要
+                      Not required
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      必要
+                      Required
                     </td>
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      オフライン利用
+                      Offline Use
                     </td>
                     <td className="px-6 py-3 text-center text-gray-400">-</td>
                     <td className="px-6 py-3 text-center text-green-600 dark:text-green-400">
-                      対応
+                      Supported
                     </td>
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      大容量ファイル
+                      Large Files
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      100MBまで
+                      Up to 100MB
                     </td>
                     <td className="px-6 py-3 text-center text-green-600 dark:text-green-400">
-                      制限なし
+                      No limit
                     </td>
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      処理速度
+                      Speed
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      通常
+                      Standard
                     </td>
                     <td className="px-6 py-3 text-center text-green-600 dark:text-green-400">
-                      高速（Rust）
+                      Fast (Rust)
                     </td>
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      対応OS
+                      Platforms
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      全OS
+                      All OS
                     </td>
                     <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
                       Windows / Mac
@@ -342,11 +342,11 @@ export default function ExcelToolBoxPage() {
       {/* Download Section */}
       <section className="py-16">
         <div className="container-custom">
-          <h2 className="section-title text-center">ダウンロード</h2>
+          <h2 className="section-title text-center">Download</h2>
           <div className="mx-auto max-w-xl">
             <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800">
               <p className="mb-6 text-center text-sm text-gray-600 dark:text-gray-400">
-                3つのツールがすべて入ったデスクトップアプリ
+                All three tools in one desktop app
               </p>
               <div className="space-y-4">
                 {/* Windows */}
@@ -359,8 +359,8 @@ export default function ExcelToolBoxPage() {
                       <path d="M3 12V6.75l8-1.25V12H3zm0 .5h8v6.5l-8-1.25V12.5zM11.5 12V5.35l9.5-1.6V12h-9.5zm0 .5h9.5v8.25l-9.5-1.6V12.5z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-white">Windows版</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400">v0.1.0 - x64 セットアップ (.exe)</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">Windows</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">v0.1.0 - x64 Setup (.exe)</p>
                     </div>
                   </div>
                   <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -378,7 +378,7 @@ export default function ExcelToolBoxPage() {
                       <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
                     </svg>
                     <div>
-                      <p className="font-semibold text-gray-900 dark:text-white">Mac版</p>
+                      <p className="font-semibold text-gray-900 dark:text-white">Mac</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">v0.1.0 - Apple Silicon (.dmg)</p>
                     </div>
                   </div>
@@ -397,16 +397,16 @@ export default function ExcelToolBoxPage() {
         <div className="container-custom">
           <div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 p-12 text-center text-white">
             <h2 className="mb-4 text-3xl font-bold">
-              まずはWeb版で試してみませんか？
+              Try the Web version first
             </h2>
             <p className="mb-8 text-primary-100">
-              インストール不要のWeb版で各ツールをお試しいただけます。
+              No installation needed — try each tool right in your browser.
             </p>
             <Link
               href="/apps/excel"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 font-semibold text-primary-600 transition-all duration-200 hover:bg-gray-100"
             >
-              Web版を試す
+              Try Web Version
               <svg
                 className="ml-2 h-5 w-5"
                 fill="none"

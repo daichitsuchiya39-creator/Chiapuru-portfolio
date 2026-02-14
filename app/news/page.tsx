@@ -4,10 +4,10 @@ import { getAllNews } from '@/lib/news';
 
 export const metadata: Metadata = {
   title: 'News',
-  description: 'アプリのリリース情報やアップデート、新機能のお知らせを掲載しています。',
+  description: 'Release notes, updates, and announcements for Chiapuru apps.',
   openGraph: {
     title: 'News | Chiapuru',
-    description: 'アプリのリリース情報やアップデート、新機能のお知らせを掲載しています。',
+    description: 'Release notes, updates, and announcements for Chiapuru apps.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -31,7 +31,7 @@ export default async function NewsPage() {
             News
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            リリース情報・アップデートのお知らせ
+            Release notes and updates
           </p>
         </div>
       </section>
@@ -56,7 +56,7 @@ export default async function NewsPage() {
           ) : (
             <div className="text-center">
               <p className="mb-4 text-lg text-gray-600 dark:text-gray-400">
-                まだニュースがありません。
+                No news yet.
               </p>
             </div>
           )}

@@ -64,7 +64,7 @@ export default function AppCard({ title, description, slug, image, comingSoon, i
       </h3>
       <p className="mb-4 text-gray-600 dark:text-gray-400">{description}</p>
       <span className="inline-flex items-center text-primary-500 transition-colors group-hover:text-primary-600 dark:text-primary-400 dark:group-hover:text-primary-300">
-        詳細を見る
+        View details
         <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>

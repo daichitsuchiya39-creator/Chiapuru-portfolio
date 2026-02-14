@@ -12,7 +12,7 @@ export async function GET(
 
   if (!session) {
     return NextResponse.json(
-      { error: '認証が必要です。Sign in してからダウンロードしてください。' },
+      { error: 'Authentication required. Please sign in to download.' },
       { status: 401 }
     );
   }
@@ -22,7 +22,7 @@ export async function GET(
 
   // パストラバーサル攻撃の防御
   if (filePath.includes('..') || filePath.includes('\0')) {
-    return NextResponse.json({ error: '不正なパスです' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
   }
 
   const fullPath = path.join(process.cwd(), 'private', 'downloads', filePath);
@@ -31,11 +31,11 @@ export async function GET(
   const resolvedPath = path.resolve(fullPath);
   const downloadsDir = path.resolve(path.join(process.cwd(), 'private', 'downloads'));
   if (!resolvedPath.startsWith(downloadsDir)) {
-    return NextResponse.json({ error: '不正なパスです' }, { status: 400 });
+    return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
   }
 
   if (!fs.existsSync(fullPath)) {
-    return NextResponse.json({ error: 'ファイルが見つかりません' }, { status: 404 });
+    return NextResponse.json({ error: 'File not found' }, { status: 404 });
   }
 
   const fileBuffer = fs.readFileSync(fullPath);

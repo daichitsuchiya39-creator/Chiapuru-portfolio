@@ -10,10 +10,10 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Spreadsheet Tools',
-  description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群。',
+  description: 'Split, merge, and convert spreadsheets with privacy-first tools.',
   openGraph: {
     title: 'Spreadsheet Tools | Chiapuru',
-    description: 'スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群。',
+    description: 'Split, merge, and convert spreadsheets with privacy-first tools.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -55,7 +55,7 @@ export default async function ExcelAppsPage() {
               Spreadsheet Tools
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-              スプレッドシートの分割・統合・変換など、表計算作業を効率化するツール群
+              Split, merge, and convert spreadsheets with privacy-first tools.
             </p>
           </div>
         </div>
@@ -76,7 +76,7 @@ export default async function ExcelAppsPage() {
                 Sheet ToolBox
               </h3>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                3つのツールをデスクトップアプリ（Windows / Mac）で使えます
+                All three tools in one desktop app for Windows and Mac
               </p>
             </div>
             <svg

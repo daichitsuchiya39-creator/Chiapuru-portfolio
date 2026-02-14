@@ -67,7 +67,7 @@ export async function GET() {
             marginTop: '8px',
           }}
         >
-          AI × 個人開発者
+          Indie Maker & Tool Builder
         </div>
 
         {/* キャッチコピー */}
@@ -79,7 +79,7 @@ export async function GET() {
             marginTop: '12px',
           }}
         >
-          仕事を効率化するツール
+          Crafting tools I wish existed
         </div>
       </div>
     ),

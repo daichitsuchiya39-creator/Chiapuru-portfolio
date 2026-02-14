@@ -21,12 +21,12 @@ export default function DownloadSection({ downloadLinks }: DownloadSectionProps)
       <div className="container-custom">
         <h2 className="section-title text-center">Download</h2>
         <p className="mb-8 text-center text-gray-600 dark:text-gray-400">
-          機密情報を扱う場合には、ローカルで完結するダウンロード版をご利用ください。
+          For sensitive data, use the desktop version — everything stays on your machine.
         </p>
         <div className="mx-auto max-w-2xl">
           {status === 'loading' ? (
             <div className="text-center text-gray-500 dark:text-gray-400">
-              読み込み中...
+              Loading...
             </div>
           ) : session ? (
             <div className="grid gap-4 sm:grid-cols-2">
@@ -51,7 +51,7 @@ export default function DownloadSection({ downloadLinks }: DownloadSectionProps)
                       {link.label}
                     </p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">
-                      クリックしてダウンロード
+                      Click to download
                     </p>
                   </div>
                 </a>
@@ -72,10 +72,10 @@ export default function DownloadSection({ downloadLinks }: DownloadSectionProps)
                 </div>
               </div>
               <h3 className="mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                ダウンロードにはSign inが必要です
+                Sign in required to download
               </h3>
               <p className="mb-6 text-gray-600 dark:text-gray-400">
-                Googleアカウントでサインインすると、デスクトップ版をダウンロードできます。
+                Sign in with your Google account to download the desktop version.
               </p>
               <button
                 onClick={() => signIn('google')}

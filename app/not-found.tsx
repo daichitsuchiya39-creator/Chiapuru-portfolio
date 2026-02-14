@@ -9,10 +9,10 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="mb-8 text-gray-600 dark:text-gray-400">
-          お探しのページは見つかりませんでした。
+          The page you&apos;re looking for doesn&apos;t exist.
         </p>
         <Link href="/" className="btn-primary">
-          トップページに戻る
+          Back to Home
         </Link>
       </div>
     </section>
