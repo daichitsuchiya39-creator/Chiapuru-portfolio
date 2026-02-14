@@ -5,6 +5,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 
 const appsDirectory = path.join(process.cwd(), 'content/apps');
+const HIDDEN_CATEGORIES = new Set(['crypto']);
 
 export interface DownloadLink {
   label: string;
@@ -69,7 +70,8 @@ export async function getAllApps(): Promise<AppData[]> {
         downloadLinks: data.downloadLinks || [],
         disclaimer: data.disclaimer || '',
       };
-    });
+    })
+    .filter((app) => !HIDDEN_CATEGORIES.has(app.category || ''));
 
   return allApps;
 }
@@ -122,7 +124,7 @@ export async function getAllCategories(): Promise<CategoryInfo[]> {
   const categoryCounts = new Map<string, number>();
 
   for (const app of allApps) {
-    if (app.category) {
+    if (app.category && !HIDDEN_CATEGORIES.has(app.category)) {
       categoryCounts.set(app.category, (categoryCounts.get(app.category) || 0) + 1);
     }
   }

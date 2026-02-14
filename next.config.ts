@@ -5,6 +5,15 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/news/excel-sheetpic-tauri-devlog',
+        destination: '/blog/excel-sheetpic-tauri-devlog',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
