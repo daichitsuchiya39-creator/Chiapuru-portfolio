@@ -22,29 +22,49 @@
 ## ディレクトリ構造
 
 ```
-app/                    # Next.js App Router
-├── page.tsx            # トップ（Featured Apps + Latest Blog）
-├── blog/               # ブログ一覧・詳細
-├── apps/               # アプリ一覧・詳細
-├── about/              # プロフィール
-├── feed.xml/           # RSS
-├── sitemap.ts          # SEO
-└── robots.ts           # SEO
+app/                        # Next.js App Router
+├── page.tsx                # トップ（Featured Apps + Latest Blog）
+├── blog/                   # ブログ一覧・詳細
+├── apps/                   # アプリ一覧（カテゴリ別）・詳細
+├── about/                  # プロフィール
+├── auth/signin/            # Google OAuth ログインページ
+├── dashboard/              # メンバーダッシュボード
+├── backstage/              # Backstage（メンバー限定）
+├── member-only-blog/       # メンバー限定ブログ
+├── member-only-apps/       # メンバー限定アプリ
+├── news/                   # ニュース一覧（※現在未使用、Blogに統合済み）
+├── privacy/                # プライバシーポリシー
+├── api/auth/[...nextauth]/ # NextAuth API エンドポイント
+├── feed.xml/               # RSS
+├── sitemap.ts              # SEO
+└── robots.ts               # SEO
 
-components/             # 共通コンポーネント
-├── Header.tsx          # ナビ（ダークモード切替含む）
-├── Footer.tsx          # SNSリンク
-├── BlogCard.tsx        # ブログカード
-├── AppCard.tsx         # アプリカード
-└── ThemeProvider.tsx   # ダークモード管理
+components/                 # 共通コンポーネント
+├── Header.tsx              # ナビ（ダークモード + Sign in/out）
+├── Footer.tsx              # SNSリンク + Backstageリンク
+├── BlogCard.tsx            # ブログカード
+├── AppCard.tsx             # アプリカード
+├── ThemeProvider.tsx        # ダークモード管理
+└── Providers.tsx           # SessionProvider 統合
 
-lib/                    # ユーティリティ
-├── blog.ts             # ブログ記事処理
-└── apps.ts             # アプリデータ処理
+lib/                        # ユーティリティ
+├── blog.ts                 # ブログ記事処理
+├── apps.ts                 # アプリデータ処理（HIDDEN_CATEGORIES でフィルタ）
+├── auth.ts                 # NextAuth 設定（Google OAuth）
+├── supabaseClient.ts       # Supabase クライアント（遅延初期化）
+├── membership.ts           # メンバーシップ管理
+├── member-only-blog.ts     # メンバー限定ブログ処理
+└── member-only-apps.ts     # メンバー限定アプリ処理
 
-content/                # Markdownコンテンツ
-├── blog/               # ブログ記事
-└── apps/               # アプリ説明
+middleware.ts               # ルート保護（/member-only-*, /backstage）
+
+content/                    # Markdownコンテンツ
+├── blog/                   # ブログ記事
+├── apps/                   # アプリ説明
+├── member-only-blog/       # メンバー限定ブログ
+├── member-only-apps/       # メンバー限定アプリ
+├── news/                   # ニュース（※Blog統合により廃止予定）
+└── pages/                  # 固定ページ
 ```
 
 ## コンテンツ追加方法
@@ -141,209 +161,103 @@ npm run deploy   # Git push（Vercel自動デプロイ）
 
 ---
 
-## 【引き継ぎドキュメント】メンバーシップシステム実装状況（2026-02-07）
+## メンバーシップシステム（✅ 本番稼働中）
 
 ### 概要
-Google OAuth + Supabase を用いたメンバーシップシステムを実装完了。ローカル開発環境で動作確認済み。本番環境（Vercel）へのデプロイ準備中。
+Google OAuth + Supabase を用いたメンバーシップシステム。2026-02-07 に本番デプロイ完了。
 
-### 実装済み機能
+### アーキテクチャ
+- **認証**: NextAuth v4 + Google OAuth（JWT セッション）
+- **DB**: Supabase (PostgreSQL) — `memberships` テーブル（RLS設定済み）
+- **ルート保護**: `middleware.ts` で `/member-only-*`, `/backstage` を保護
+- **自動登録**: Google サインイン時に `createOrGetMembership()` で free tier 自動作成
 
-#### 1. 認証基盤（Next-Auth.js v4 + Google OAuth）
-- **ファイル**: `lib/auth.ts`, `app/api/auth/[...nextauth]/route.ts`
-- **機能**:
-  - Google OAuth ログイン
-  - JWT ベースのセッション管理
-  - ログイン時にメンバーシップ自動作成
-- **状況**: ✅ ローカルで動作確認済み（ポート 3001）
-
-#### 2. Supabase 連携
-- **ファイル**: `lib/supabaseClient.ts`, `lib/membership.ts`
-- **機能**:
-  - Supabase クライアント初期化（公開Key + 管理者Key）
-  - メンバーシップテーブルの照会・自動作成
-  - Row Level Security (RLS) ポリシー設定
-- **スキーマ**: `memberships`（id, email, tier, expires_at, created_at, updated_at）
-- **セットアップスクリプト**: `docs/supabase-setup.sql`
-- **状況**: ✅ テーブル作成・RLS設定完了
-
-#### 3. ユーザーインターフェース
-- **ログイン UI**: `app/auth/signin/page.tsx`（Google ボタン）
-- **ダッシュボード**: `app/dashboard/page.tsx`（ユーザー情報・メンバーシップ表示）
-- **Header**: `components/Header.tsx`（Sign in / Sign out ボタン、Dashboard リンク）
-- **状況**: ✅ ローカルで動作確認済み
-
-#### 4. メンバー限定コンテンツ保護
-- **Middleware**: `middleware.ts`（`/member-only-*` ルート認証保護）
-- **メンバー限定ブログ**: 
-  - `lib/member-only-blog.ts`（Markdown 読み込み）
-  - `app/member-only-blog/page.tsx`（一覧）
-  - `app/member-only-blog/[slug]/page.tsx`（詳細）
-- **メンバー限定ツール**:
-  - `lib/member-only-apps.ts`（Markdown 読み込み）
-  - `app/member-only-apps/page.tsx`（一覧）
-  - `app/member-only-apps/[slug]/page.tsx`（詳細）
-- **認証**: Server Component 内で `getServerSession()`確認 → 未認証は `/auth/signin` へリダイレクト
-- **状況**: ✅ Build 成功、構造完成
-
-#### 5. 自動メンバー登録フロー
-1. ユーザーが Google でサインイン
-2. NextAuth `signIn` callback → `createOrGetMembership()` 呼び出し
-3. Supabase に自動的に `memberships` レコード作成（tier: 'free'）
-4. Dashboard でメンバーシップ情報表示
-- **状況**: ✅ ローカルで動作確認済み
-
-### テックスタック（追加部分）
-
-| レイヤー | 技術 |
-|---------|------|
-| **認証** | next-auth v4.22.1 |
-| **OAuth Provider** | Google Cloud Console |
-| **Database** | Supabase (PostgreSQL) |
-| **Database Client** | @supabase/supabase-js v2.0.4 |
-| **Session Strategy** | JWT (secure httpOnly Cookie) |
-| **Route Protection** | Next.js Middleware |
-
-### 環境変数
-
-#### ローカル開発（`.env.local`）
+### 環境変数（7つ）
 ```
-NEXTAUTH_SECRET=（openssl rand -base64 32 で生成）
-NEXTAUTH_URL=http://localhost:3000 または http://localhost:3001
-GOOGLE_CLIENT_ID=（Google Cloud Console から取得）
-GOOGLE_CLIENT_SECRET=（Google Cloud Console から取得）
-NEXT_PUBLIC_SUPABASE_URL=（Supabase ダッシュボードから取得）
-NEXT_PUBLIC_SUPABASE_ANON_KEY=（Supabase ダッシュボードから取得）
-SUPABASE_SERVICE_ROLE_KEY=（Supabase ダッシュボードから取得）
+NEXTAUTH_SECRET, NEXTAUTH_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET
+NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY, SUPABASE_SERVICE_ROLE_KEY
 ```
+- ローカル: `.env.local`（git ignore済み）
+- 本番: Vercel Environment Variables（Production）
+- **`SUPABASE_SERVICE_ROLE_KEY`** は絶対に公開しないこと
 
-#### 本番環境（Vercel Project Settings）
-- 同じ変数を **Environment Variables** → **Production** に登録
-- `NEXTAUTH_URL` は `https://chiapuru.com` に変更
-- Google OAuth callback URL にも `https://chiapuru.com/api/auth/callback/google` 追加
+### 関連ドキュメント
+- `docs/supabase-setup.sql` — DB スキーマ
+- `docs/SUPABASE_SETUP.md` — Supabase セットアップ手順
+- `docs/VERCEL_DEPLOYMENT.md` — 本番デプロイ手順
+- `.env.local.example` — 環境変数テンプレート
 
-### 実装ファイル一覧
-
-**新規作成**:
-- `lib/auth.ts` - NextAuth 設定
-- `lib/supabaseClient.ts` - Supabase クライアント初期化
-- `lib/membership.ts` - メンバーシップ管理
-- `lib/member-only-blog.ts` - メンバー限定ブログ処理
-- `lib/member-only-apps.ts` - メンバー限定アプリ処理
-- `app/api/auth/[...nextauth]/route.ts` - OAuth プロバイダー
-- `app/auth/signin/page.tsx` - ログインページ
-- `app/dashboard/page.tsx` - メンバーダッシュボード
-- `app/member-only-blog/page.tsx` - メンバーブログ一覧
-- `app/member-only-blog/[slug]/page.tsx` - メンバーブログ詳細
-- `app/member-only-apps/page.tsx` - メンバーアプリ一覧
-- `app/member-only-apps/[slug]/page.tsx` - メンバーアプリ詳細
-- `middleware.ts` - ルート保護
-- `.env.local.example` - 環境変数テンプレート
-- `docs/supabase-setup.sql` - Supabase スキーマ
-- `docs/SUPABASE_SETUP.md` - Supabase セットアップ手順
-- `docs/VERCEL_DEPLOYMENT.md` - 本番デプロイ手順
-- `docs/DEPLOYMENT_CHECKLIST.md` - デプロイチェックリスト
-
-**修正既存ファイル**:
-- `components/Header.tsx` - Sign in / out ボタン追加
-- `components/Providers.tsx` - SessionProvider 統合
-- `package.json` - 依存関係追加
-
-### 残作業（優先順）
-
-#### ~~🔴 本番デプロイ前必須タスク~~ ✅ 完了（2026-02-07）
-1. ~~**Vercel 環境変数登録**~~ ✅
-2. ~~**Google OAuth 本番設定**~~ ✅
-3. ~~**Supabase 本番テーブル確認**~~ ✅
-4. ~~**Vercel 自動デプロイ**~~ ✅
-5. ~~**本番環境テスト**~~ ✅ ログイン・メンバーシップ自動作成・ダッシュボード表示確認済み
-
-#### 🟡 本番デプロイ後のコンテンツ拡充
-1. **メンバー限定ブログ記事追加**
-   - `content/member-only-blog/YYYY-MM-DD-title.md` を作成
-   - Frontmatter: `title`, `date`, `excerpt`, `tags`
-2. **メンバー限定ツール説明追加**
-   - `content/member-only-apps/app-slug.md` を作成
-   - Frontmatter: `title`, `description`, `features`, `howToUse`
-
-#### 🟢 将来の最適化（低優先度）
-- [ ] プレミアム会員の有効期限チェック & 自動ダウングレード
-- [ ] 課金機能統合（Stripe / Paddle）
-- [ ] メンバーシップティア追加（Free → Pro → Enterprise など）
-- [ ] メンバー向けメール通知
-- [ ] ダウンロード・コンテンツアクセス統計
-
-### 重要な注意事項
-
-#### セキュリティ
-- **`SUPABASE_SERVICE_ROLE_KEY`** は絶対に `.env.local` 以外に公開しないこと
-- ローカル環境とVercel環境を分けて管理（`.env.local` は git ignore済み）
-- Google OAuth secrets も同様
-
-#### パフォーマンス
-- メンバーシップ照会（`getMembershipByEmail()`）は Server-side で実行
-- Client-side で `useSession()` 使用時はリダイレクト先で session token 確認
-- Middleware で早期にリクエスト棄却 → Server Component での二重チェック回避
-
-#### Markdown 構文
-**メンバー限定ブログ** (`content/member-only-blog/`):
-```yaml
----
-title: "ブログタイトル"
-date: "2026-02-07"
-excerpt: "ブログの概要"
-tags: ["技術", "AI"]
----
-# 本文を Markdown で記述
-```
-
-**メンバー限定ツール** (`content/member-only-apps/`):
-```yaml
----
-title: "ツール名"
-description: "簡潔な説明"
-features: ["機能1", "機能2", "機能3"]
-howToUse: ["ステップ1", "ステップ2"]
----
-# 詳しい使い方を Markdown で記述
-```
-
-### テスト手順（ローカル）
-
-```bash
-# 環境準備
-cp .env.local.example .env.local
-# .env.local に実際の値を入力
-
-# 開発サーバー起動
-npm run dev
-# http://localhost:3000 (3001 の場合もある) にアクセス
-
-# ログインテスト
-# 1. Header の "Sign in" をクリック → Google ログイン
-# 2. /dashboard でメンバーシップ情報表示確認
-# 3. /member-only-blog にアクセス → コンテンツ表示確認
-# 4. ログアウト → /member-only-blog → /auth/signin へリダイレクト確認
-```
-
-### 引き継ぎチェックリスト
-
-- [x] 実装完了・ローカルで動作確認
-- [x] TypeScript 型安全化
-- [x] ビルド成功（`npm run build`）
-- [x] コミット・プッシュ完了
-- [x] ドキュメント作成完了
-- [x] **Vercel 本番環境変数登録** ✅ 2026-02-07 完了
-- [x] **本番デプロイ** ✅ 2026-02-07 完了
-- [x] **本番環境テスト** ✅ 2026-02-07 Google OAuth ログイン・メンバーシップ自動作成確認済み
+### 残タスク
 - [ ] メンバー限定コンテンツ追加（随時）
-- [ ] 課金機能統合（将来）
-
-### 本番デプロイ時の追加修正（2026-02-07）
-
-- `lib/supabaseClient.ts`: Supabase クライアントを遅延初期化に変更（ビルド時の env vars 未設定エラー回避）
-- `lib/membership.ts`: `supabaseAdmin` → `getSupabaseAdmin()` に変更
-- Vercel 環境変数 7 つ登録済み（Production）
-- Google Cloud Console に本番 callback URL 追加済み
+- [ ] 課金機能統合（Stripe / Paddle）
+- [ ] メンバーシップティア追加（Free → Pro → Enterprise）
+- [ ] メンバー向けメール通知
 
 ---
-*Last updated: 2026-02-07*
+
+## 開発履歴
+
+### Phase 1: サイト基盤構築（～2026-02-06）
+- Next.js 15 + App Router でポートフォリオサイト構築
+- Markdown ベースのブログ・アプリ紹介ページ
+- OG画像自動生成、プライバシーポリシーページ
+- ダークモード対応
+
+### Phase 2: メンバーシップシステム（2026-02-07）
+- Google OAuth + Supabase でメンバーシップ機能実装
+- メンバー限定コンテンツ（Blog / Apps）の認証保護
+- ダッシュボード、お気に入り機能
+- Backstage（メンバー限定）ページ追加
+- Vercel 本番デプロイ完了
+
+### Phase 3: コンテンツ拡充（2026-02-08～02-12）
+- **アプリ追加**: 推しコイン実力チェッカー（Crypto カテゴリ）
+- **アプリカテゴリ化**: `/apps` をカテゴリ一覧に変更、Excel専用ページ追加
+- **ブログ記事追加**:
+  - 私がAIエージェントを信頼する理由
+  - Macをエンジニアとして使いこなす完全ガイド
+  - Windowsエンジニア向け完全ガイド
+  - スタートアップ技術選定ガイド
+  - dotfilesリポジトリ作成ガイド
+  - Claude API業務自動化ガイド
+- **remark-gfm 追加**: Markdown テーブル表示対応
+- **favicon 設定**: `logo-chiapuru-site3` を採用
+
+### Phase 4: デスクトップアプリ配布（2026-02-12～02-13）
+- SheetPic の Tauri デスクトップ版をビルド（Windows / Mac）
+- ダウンロードリンク追加（認証ゲート付き）
+- Tauri 開発記録 & Rust 初体験のブログ記事追加
+- ToolBox ランディングページ追加
+
+### Phase 5: サイト整理・商標対策（2026-02-13～02-14）
+- **商標対策**: 全アプリ名から「Excel」を除去（SheetPic, MacroRemover, SheetMerge）
+- **Crypto カテゴリ非表示**: `lib/apps.ts` に `HIDDEN_CATEGORIES` フィルタ追加
+- **News → Blog 統合**: News ページの記事を Blog に移動、301 リダイレクト設定（`next.config.ts`）
+- **リダイレクト**: `/news/excel-sheetpic-tauri-devlog` → `/blog/excel-sheetpic-tauri-devlog`
+
+### Phase 6: 英語リブランディング・海外展開準備（2026-02-14）
+- **サイト言語変更**: `lang="ja"` → `lang="en"`、OG locale `ja_JP` → `en_US`
+- **ブランドメッセージ刷新**:
+  - タグライン: `仕事を効率化するツールを作っています` → `Crafting tools I wish existed`
+  - サブメッセージ: `Privacy-first spreadsheet tools, built by an indie maker.`
+  - CTA: `Your data stays on your machine. Always.`
+- **全ページ英語化**: Hero, About, Apps, Blog, Footer, RSS フィード
+- **「無料」表記の削除**: 有料販売準備のため、無料を強調する文言を除去
+- **変更ファイル**: `app/layout.tsx`, `app/page.tsx`, `app/about/page.tsx`, `app/apps/page.tsx`, `app/blog/page.tsx`, `app/feed.xml/route.ts`, `components/Footer.tsx`
+- **メンバー限定記事追加**: SheetToolBox プロトタイプ完成報告（`content/member-only-blog/2026-02-13-sheettoolbox-prototype-complete.md`）
+
+### 現在のコンテンツ一覧
+
+#### 公開アプリ（`content/apps/`）
+| slug | カテゴリ | 説明 |
+|------|---------|------|
+| excel-splitter | excel | SheetPic（シート抽出） |
+| macro-remover | excel | MacroRemover（マクロ除去） |
+| sheet-merge | excel | SheetMerge（シート結合） |
+| oshi-coin-checker | crypto | 推しコイン実力チェッカー（※非表示） |
+
+#### ブログ記事（`content/blog/`） — 11記事
+技術記事（Mac/Windows/dotfiles/Claude API）、開発記録（Tauri/Rust）、自己紹介など
+
+---
+*Last updated: 2026-02-14*
