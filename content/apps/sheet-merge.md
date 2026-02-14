@@ -1,51 +1,51 @@
 ---
 title: "Sheet Merge"
 category: "excel"
-description: "複数のExcelファイルのシートを1つのファイルに統合。各ファイルのシートをまとめて管理・共有できます。"
+description: "Merge sheets from multiple Excel files into a single file. Consolidate and manage all your worksheets in one place."
 image: "/images/app_image/SheetMarge.png"
 features:
-  - "複数ファイル対応 - 2つ以上のExcelファイルを一括で統合"
-  - "シート名自動調整 - 「ファイル名_シート名」形式で重複を回避"
-  - "書式完全保持 - セルの書式、数式、結合セル、列幅をそのまま維持"
-  - "ドラッグ&ドロップ対応 - 直感的な操作で複数ファイルを選択"
+  - "Multiple File Support - Merge two or more Excel files at once"
+  - "Auto Sheet Naming - Prevents duplicates with 'FileName_SheetName' format"
+  - "Formatting Preserved - Cell styles, formulas, merged cells, and column widths stay intact"
+  - "Drag & Drop Support - Select multiple files with an intuitive interface"
 howToUse:
-  - "2つ以上のExcelファイル（.xlsx, .xlsm）をドラッグ&ドロップ"
-  - "各ファイルのシート一覧を確認"
-  - "「統合してダウンロード」ボタンをクリック"
+  - "Drag & drop two or more Excel files (.xlsx, .xlsm)"
+  - "Review the sheet list from each file"
+  - "Click the Merge & Download button"
 externalLink: "https://sheet-marge.vercel.app/"
 screenshots: []
-# downloadLinks:  ※ファイル配置後に有効化
-#   - label: "Windows版"
+# downloadLinks:
+#   - label: "Windows"
 #     path: "sheetmerge/SheetMerge-x.x.x-win-x64.zip"
-#   - label: "Mac版"
+#   - label: "Mac"
 #     path: "sheetmerge/SheetMerge-x.x.x-mac.zip"
-disclaimer: "本ツールは提供される情報の正確性、完全性、有用性についていかなる保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用ユーザー様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。"
+disclaimer: "This tool is provided as-is without any warranty of accuracy, completeness, or fitness for a particular purpose. Please verify all generated data and files yourself. The developer assumes no liability for any damages arising from the use of this tool."
 ---
 
-## Sheet Mergeとは
+## What is Sheet Merge?
 
-Sheet Mergeは、複数のExcelファイルに散らばったシートを1つのファイルにまとめるツールです。各シートは「元ファイル名_シート名」の形式でリネームされるため、どのファイルから来たシートか一目でわかります。
+Sheet Merge is a tool that consolidates sheets from multiple Excel files into a single file. Each sheet is renamed to "OriginalFileName_SheetName" so you can easily tell where each sheet came from.
 
-## こんな方におすすめ
+## Who is this for?
 
-- 複数の部署・担当者から集めたExcelファイルを1つにまとめたい
-- 月次レポートなど、期間ごとに分かれたファイルを統合したい
-- 複数のテンプレートファイルを1つのマスターファイルにしたい
-- 手作業でのコピー&ペーストを減らしたい
+- You want to combine Excel files collected from multiple departments or team members
+- You need to merge monthly reports or other period-based files
+- You want to consolidate multiple template files into one master file
+- You want to eliminate tedious manual copy & paste
 
-## 使用例
+## Use cases
 
-### 部署別データの統合
-営業部.xlsx（売上シート、顧客シート）+ 経理部.xlsx（経費シート）
-→ 統合ファイル.xlsx（営業部_売上、営業部_顧客、経理部_経費）
+### Consolidating department data
+Sales.xlsx (Revenue sheet, Customers sheet) + Accounting.xlsx (Expenses sheet)
+→ Combined.xlsx (Sales_Revenue, Sales_Customers, Accounting_Expenses)
 
-### 月次データの集約
-1月.xlsx + 2月.xlsx + 3月.xlsx
-→ 四半期レポート.xlsx
+### Aggregating monthly data
+January.xlsx + February.xlsx + March.xlsx
+→ QuarterlyReport.xlsx
 
-## 技術仕様
+## Technical specs
 
-- 対応形式：.xlsx, .xlsm
-- 出力形式：.xlsx（マクロなし）
-- 最大ファイルサイズ：100MB（合計）
-- シート名：最大31文字（Excel制限）に自動調整
+- Supported formats: .xlsx, .xlsm
+- Output format: .xlsx (macro-free)
+- Max file size: 100MB (total)
+- Sheet names: Auto-trimmed to 31 characters (Excel limit)

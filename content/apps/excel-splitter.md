@@ -1,41 +1,41 @@
 ---
 title: "Sheet Pic"
 category: "excel"
-description: "シート名でExcelファイルを簡単に分割。キーワード検索や手動選択で必要なシートだけを抽出できます。"
+description: "Easily split Excel files by sheet name. Extract only the sheets you need using keyword search or manual selection."
 image: "/images/app_image/Excel-Sheet-Pic.png"
 features:
-  - "キーワード検索でシートを抽出 - シート名に含まれるキーワードで一括抽出"
-  - "手動選択で複数シート抽出 - 必要なシートを自由に選んで抽出"
-  - "書式を保持したまま新ファイル生成 - 元のフォーマットを崩さずに保存"
-  - "複数ファイルの一括処理 - まとめて処理で作業効率アップ"
+  - "Keyword Search Extraction - Batch-extract sheets by keywords in their names"
+  - "Manual Multi-Sheet Selection - Pick exactly the sheets you need"
+  - "Formatting Preserved - Generated files keep the original formatting intact"
+  - "Batch Processing - Process multiple files at once for maximum efficiency"
 howToUse:
-  - "Excelファイルをアップロード"
-  - "抽出したいシートを選択（キーワード検索または手動選択）"
-  - "「抽出」ボタンをクリック"
-  - "新しいExcelファイルをダウンロード"
+  - "Upload your Excel file(s)"
+  - "Select the sheets to extract (keyword search or manual selection)"
+  - "Click the Extract button"
+  - "Download the new Excel file"
 externalLink: "https://excel-sheet-pick.vercel.app/"
 screenshots: []
 downloadLinks:
-  - label: "Windows版"
+  - label: "Windows"
     path: "sheetpic/ExcelSheetPic-0.1.0-win-x64.zip"
-  - label: "Mac版"
+  - label: "Mac"
     path: "sheetpic/ExcelSheetPic-0.1.0-mac.zip"
-disclaimer: "本ツールは提供される情報の正確性、完全性、有用性について何の保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用者様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。"
+disclaimer: "This tool is provided as-is without any warranty of accuracy, completeness, or fitness for a particular purpose. Please verify all generated data and files yourself. The developer assumes no liability for any damages arising from the use of this tool."
 ---
 
-## Excel Sheet Picとは
+## What is Sheet Pic?
 
-Excel Sheet Picは、大量のシートを含むExcelファイルから、必要なシートだけを簡単に抽出できるWebアプリケーションです。
+Sheet Pic is a web application that lets you easily extract specific sheets from Excel files containing many worksheets.
 
-## こんな方におすすめ
+## Who is this for?
 
-- 複数のシートがあるExcelファイルを分割したい
-- 特定のキーワードを含むシートだけを抜き出したい
-- 手作業でのコピー&ペーストを減らしたい
-- 書式を保持したまま新しいファイルを作りたい
+- You need to split an Excel file with multiple sheets
+- You want to extract only sheets containing a specific keyword
+- You want to eliminate tedious manual copy & paste
+- You need to create a new file while preserving formatting
 
-## 開発の背景
+## Why I built this
 
-日々の仕事でシート数の多いExcelファイルを扱う機会が多くありました。必要なシートだけを別ファイルにする作業は、手作業だと時間がかかるし、ミスも起きやすい。
+In my day job, I frequently dealt with Excel files containing dozens of sheets. Manually copying specific sheets into a new file was time-consuming and error-prone.
 
-そこで、この作業を自動化するツールを開発しました。
+So I built a tool to automate the process.

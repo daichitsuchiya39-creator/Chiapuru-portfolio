@@ -12,7 +12,7 @@ interface Props {
 
 // Default app data for excel-splitter if no markdown file exists
 const CATEGORY_LABELS: Record<string, { href: string; label: string }> = {
-  excel: { href: '/apps/excel', label: 'Back to Spreadsheet Tools' },
+  excel: { href: '/apps/excel', label: 'Back to Sheet Tool Box' },
 };
 
 const defaultExcelSplitter = {

@@ -1,44 +1,44 @@
 ---
 title: "Macro Remover"
 category: "excel"
-description: "マクロ付きExcelファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換。書式やデータはそのまま保持されます。"
+description: "Remove macros from Excel files (.xlsm) and convert them to safe .xlsx files. All formatting and data are fully preserved."
 image: "/images/app_image/Excel-Macro-Remover.png"
 features:
-  - "ワンクリックでマクロ除去 - ファイルをアップロードするだけで自動変換"
-  - "書式・データ完全保持 - セルの書式、数式、レイアウトはそのまま"
-  - "ドラッグ&ドロップ対応 - 直感的な操作でファイルを選択"
-  - "デスクトップアプリ版も提供 - Windows用exeファイルで大容量ファイルも処理可能"
+  - "One-Click Macro Removal - Just upload your file and it converts automatically"
+  - "Formatting & Data Preserved - Cell styles, formulas, and layouts stay intact"
+  - "Drag & Drop Support - Select files with an intuitive drag & drop interface"
+  - "Desktop App Available - Windows executable for handling large files"
 howToUse:
-  - ".xlsmファイルをドラッグ&ドロップ（またはクリックして選択）"
-  - "「マクロを除去してダウンロード」ボタンをクリック"
-  - "マクロが除去された.xlsxファイルをダウンロード"
+  - "Drag & drop your .xlsm file (or click to select)"
+  - "Click the Remove Macros & Download button"
+  - "Download the macro-free .xlsx file"
 externalLink: "https://macro-remover-for-excel.vercel.app/"
 screenshots: []
-# downloadLinks:  ※ファイル配置後に有効化
-#   - label: "Windows版"
+# downloadLinks:
+#   - label: "Windows"
 #     path: "macroremover/MacroRemover-x.x.x-win-x64.zip"
-#   - label: "Mac版"
+#   - label: "Mac"
 #     path: "macroremover/MacroRemover-x.x.x-mac.zip"
-disclaimer: "本ツールは提供される情報の正確性、完全性、有用性についていかなる保証もいたしません。本ツールを使用して生成されたデータおよびファイルについて、その正確性をご利用ユーザー様ご自身で目視により確認してください。本ツール使用によって生じたいかなる損害についても、当サイト・開発者は一切責任を負いかねます。"
+disclaimer: "This tool is provided as-is without any warranty of accuracy, completeness, or fitness for a particular purpose. Please verify all generated data and files yourself. The developer assumes no liability for any damages arising from the use of this tool."
 ---
 
-## Excel Macro Removerとは
+## What is Macro Remover?
 
-Excel Macro Removerは、マクロ付きExcelファイル（.xlsm）からマクロを除去し、安全な.xlsxファイルに変換するツールです。
+Macro Remover is a tool that strips macros from Excel files (.xlsm) and converts them into safe .xlsx files.
 
-## こんな方におすすめ
+## Who is this for?
 
-- 外部から受け取った.xlsmファイルのマクロが心配
-- マクロ付きファイルをマクロなしで共有したい
-- セキュリティポリシーでマクロ付きファイルを開けない環境で使いたい
-- VBAの知識がなくてもマクロを除去したい
+- You're concerned about macros in .xlsm files received from external sources
+- You want to share macro-enabled files without the macros
+- Your security policy prevents opening macro-enabled files
+- You want to remove macros without any VBA knowledge
 
-## なぜマクロを除去するのか
+## Why remove macros?
 
-Excelのマクロ（VBA）は業務自動化に便利ですが、悪意のあるコードが含まれている可能性もあります。外部から受け取ったファイルや、マクロが不要になったファイルからマクロを除去することで、安全に利用・共有できます。
+Excel macros (VBA) are useful for automation, but they can also contain malicious code. Removing macros from externally received files or files where macros are no longer needed ensures safe usage and sharing.
 
-## 技術仕様
+## Technical specs
 
-- 対応形式：.xlsm → .xlsx
-- 最大ファイルサイズ：100MB
-- 処理方式：openpyxlによるファイル構造の再構築
+- Supported format: .xlsm → .xlsx
+- Max file size: 100MB
+- Processing method: File structure reconstruction via openpyxl

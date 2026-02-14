@@ -9,17 +9,17 @@ import { getAppsByCategory } from '@/lib/apps';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: 'Spreadsheet Tools',
+  title: 'Sheet Tool Box',
   description: 'Split, merge, and convert spreadsheets with privacy-first tools.',
   openGraph: {
-    title: 'Spreadsheet Tools | Chiapuru',
+    title: 'Sheet Tool Box | Chiapuru',
     description: 'Split, merge, and convert spreadsheets with privacy-first tools.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'Spreadsheet Tools',
+        alt: 'Sheet Tool Box',
       },
     ],
   },
@@ -52,7 +52,7 @@ export default async function ExcelAppsPage() {
           </Link>
           <div className="text-center">
             <h1 className="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl">
-              Spreadsheet Tools
+              Sheet Tool Box
             </h1>
             <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
               Split, merge, and convert spreadsheets with privacy-first tools.
