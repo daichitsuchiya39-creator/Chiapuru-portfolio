@@ -9,11 +9,11 @@ import { getAllNews } from '@/lib/news';
 export const metadata: Metadata = {
   title: 'Home',
   description:
-    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。スプレッドシート自動化、Python、AI活用など。',
+    'Privacy-first spreadsheet tools, built by an indie maker. SheetToolBox keeps your files local — nothing leaves your machine.',
   openGraph: {
     type: 'website',
-    title: 'Chiapuru - 仕事を効率化するツール',
-    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    title: 'Chiapuru — Crafting tools I wish existed',
+    description: 'Privacy-first spreadsheet tools, built by an indie maker.',
     url: 'https://chiapuru.com',
     siteName: 'Chiapuru',
     images: [
@@ -21,14 +21,14 @@ export const metadata: Metadata = {
         url: 'https://chiapuru.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'Chiapuru',
+        alt: 'Chiapuru — Crafting tools I wish existed',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chiapuru - 仕事を効率化するツール',
-    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    title: 'Chiapuru — Crafting tools I wish existed',
+    description: 'Privacy-first spreadsheet tools, built by an indie maker.',
     images: ['https://chiapuru.com/api/og'],
   },
 };
@@ -36,13 +36,13 @@ export const metadata: Metadata = {
 const featuredApps = [
   {
     title: 'Sheet Pic',
-    description: 'Excelファイルから必要なシートだけを簡単に抽出。キーワード検索や手動選択で書式を崩さずに分割できます。',
+    description: 'Extract specific sheets from spreadsheet files. Preserves formatting, styles, and merged cells — all processed locally.',
     slug: 'excel-splitter',
     image: '/images/app_image/Excel-Sheet-Pic.png',
   },
   {
     title: 'Coming Soon...',
-    description: '次のツールを開発中です。AIを活用したツールを準備しています！',
+    description: 'More tools in the works — stay tuned.',
     slug: '',
     comingSoon: true,
   },
@@ -57,12 +57,12 @@ export default async function Home() {
     <>
       {/* Hero Section */}
       <Hero
-        subtitle="Hi, I'm Chiapuru 👋"
-        title="仕事を効率化するツールを作っています"
-        description="日々の仕事で感じた「こんなツールがあったらいいな」を形にしています。Excel自動化やWebアプリの開発を中心に、誰でも使える便利なツールを公開しています。"
-        ctaText="Check out my apps"
+        subtitle="Hi, I'm Chiapuru"
+        title="Crafting tools I wish existed"
+        description="Privacy-first spreadsheet tools, built by an indie maker. SheetToolBox keeps your files local — nothing leaves your machine."
+        ctaText="Explore tools"
         ctaLink="/apps"
-        secondaryCtaText="Read my blog"
+        secondaryCtaText="Read the blog"
         secondaryCtaLink="/blog"
       />
 
@@ -72,7 +72,7 @@ export default async function Home() {
           <div className="mb-12 text-center">
             <h2 className="section-title">Featured Apps</h2>
             <p className="text-gray-600 dark:text-gray-400">
-              業務効率化に役立つツールを開発・公開しています
+              Tools built to solve real workflow problems
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default async function Home() {
             <div className="mb-12 text-center">
               <h2 className="section-title">Latest News</h2>
               <p className="text-gray-600 dark:text-gray-400">
-                リリース情報・アップデートのお知らせ
+                Release notes and updates
               </p>
             </div>
 
@@ -137,7 +137,7 @@ export default async function Home() {
           <div className="mb-12 text-center">
             <h2 className="section-title">Latest Blog Posts</h2>
             <p className="text-gray-600 dark:text-gray-400">
-              開発の裏話やTips、個人開発についての記事を書いています
+              Behind the scenes of building indie software
             </p>
           </div>
 
@@ -166,15 +166,15 @@ export default async function Home() {
       <section className="py-20">
         <div className="container-custom">
           <div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 p-12 text-center text-white">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Ready to boost your productivity?</h2>
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Your data stays on your machine. Always.</h2>
             <p className="mb-8 text-lg text-primary-100">
-              あなたの日々の業務を少しだけお手伝いします。
+              Privacy-first tools for spreadsheet power users.
             </p>
             <Link
               href="/apps"
               className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 font-semibold text-primary-600 transition-all duration-200 hover:bg-gray-100"
             >
-              Check out my apps
+              Explore tools
               <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"

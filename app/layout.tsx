@@ -10,34 +10,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Chiapuru - 仕事を効率化するツール',
+    default: 'Chiapuru — Crafting tools I wish existed',
     template: '%s | Chiapuru',
   },
   description:
-    'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。スプレッドシート自動化、Python、AI活用など。',
-  keywords: ['個人開発', 'スプレッドシート自動化', 'Python', 'Flask', 'AI', 'ツール開発'],
+    'Privacy-first spreadsheet tools, built by an indie maker. SheetToolBox keeps your files local — nothing leaves your machine.',
+  keywords: ['spreadsheet tools', 'SheetToolBox', 'privacy-first', 'desktop app', 'Tauri', 'indie developer'],
   authors: [{ name: 'Chiapuru' }],
   creator: 'Chiapuru',
   openGraph: {
     type: 'website',
-    locale: 'ja_JP',
+    locale: 'en_US',
     url: 'https://chiapuru.com',
     siteName: 'Chiapuru',
-    title: 'Chiapuru - 仕事を効率化するツール',
-    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    title: 'Chiapuru — Crafting tools I wish existed',
+    description: 'Privacy-first spreadsheet tools, built by an indie maker.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'Chiapuru - AI × 個人開発者',
+        alt: 'Chiapuru — Crafting tools I wish existed',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Chiapuru - 仕事を効率化するツール',
-    description: 'AI × 個人開発者のChiapuruが作る、仕事を効率化するツールとブログ。',
+    title: 'Chiapuru — Crafting tools I wish existed',
+    description: 'Privacy-first spreadsheet tools, built by an indie maker.',
     images: ['https://chiapuru.com/api/og'],
   },
   robots: {
@@ -52,7 +52,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} font-sans`}>
         <Providers>{children}</Providers>
       </body>

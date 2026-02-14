@@ -11,10 +11,10 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Apps',
-  description: 'Chiapuruが開発した業務効率化ツールの一覧。スプレッドシート自動化やWebアプリケーションなど。',
+  description: 'Privacy-first spreadsheet tools by Chiapuru. Extract sheets, remove macros, merge files — all processed locally.',
   openGraph: {
     title: 'Apps | Chiapuru',
-    description: 'Chiapuruが開発した業務効率化ツールの一覧。スプレッドシート自動化やWebアプリケーションなど。',
+    description: 'Privacy-first spreadsheet tools by Chiapuru. Extract sheets, remove macros, merge files — all processed locally.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -49,9 +49,7 @@ export default async function AppsPage() {
             Apps
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            業務効率化に役立つツールを開発・公開しています。
-            <br />
-            すべて無料でお使いいただけます。
+            Privacy-first tools for spreadsheet power users.
           </p>
         </div>
       </section>
@@ -100,10 +98,10 @@ export default async function AppsPage() {
       <section className="bg-gray-50 py-16 dark:bg-gray-800/50">
         <div className="container-custom text-center">
           <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
-            こんなツールが欲しい！
+            Have a tool idea?
           </h2>
           <p className="mb-8 text-gray-600 dark:text-gray-400">
-            リクエストがあれば、ぜひTwitterでお知らせください。
+            I&apos;d love to hear your suggestions. Drop me a message on X.
           </p>
           <a
             href="https://twitter.com/"

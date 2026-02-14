@@ -10,10 +10,10 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: '個人開発、スプレッドシート自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+  description: 'Behind the scenes of building indie software. Dev logs, tips, and lessons learned.',
   openGraph: {
     title: 'Blog | Chiapuru',
-    description: '個人開発、スプレッドシート自動化、Python、Flaskなどの技術記事や開発の裏話を公開しています。',
+    description: 'Behind the scenes of building indie software. Dev logs, tips, and lessons learned.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -56,7 +56,7 @@ export default async function BlogPage() {
             Blog
           </h1>
           <p className="mx-auto max-w-2xl text-lg text-gray-600 dark:text-gray-300">
-            開発の裏話やTips、個人開発についての記事を書いています。
+            Behind the scenes of building indie software.
           </p>
         </div>
       </section>
@@ -82,10 +82,10 @@ export default async function BlogPage() {
           ) : (
             <div className="text-center">
               <p className="mb-4 text-lg text-gray-600 dark:text-gray-400">
-                まだ記事がありません。
+                No posts yet.
               </p>
               <p className="text-gray-500 dark:text-gray-500">
-                近日中に最初の記事を公開予定です。お楽しみに！
+                New articles coming soon — stay tuned!
               </p>
             </div>
           )}

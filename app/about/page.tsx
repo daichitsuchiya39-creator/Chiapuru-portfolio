@@ -4,10 +4,10 @@ import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'Chiapuruのプロフィール。AIを活用した業務効率化ツールを開発する個人開発者。',
+  description: 'Meet Chiapuru — an indie maker building privacy-first spreadsheet tools with Rust, Tauri, and AI.',
   openGraph: {
     title: 'About | Chiapuru',
-    description: 'Chiapuruのプロフィール。AIを活用した業務効率化ツールを開発する個人開発者。',
+    description: 'Meet Chiapuru — an indie maker building privacy-first spreadsheet tools with Rust, Tauri, and AI.',
     images: [
       {
         url: 'https://chiapuru.com/api/og',
@@ -24,7 +24,7 @@ const skills = [
   { name: 'Python', level: 90 },
   { name: 'Flask', level: 85 },
   { name: 'HTML/CSS', level: 85 },
-  { name: 'AI / LLM活用', level: 75 },
+  { name: 'AI / LLM', level: 75 },
   { name: 'JavaScript/TypeScript', level: 75 },
   { name: 'React/Next.js', level: 70 },
 ];
@@ -32,18 +32,18 @@ const skills = [
 const timeline = [
   {
     year: '2026',
-    title: 'Sheet Pic & ポートフォリオサイト公開',
-    description: 'ExcelシートWebアプリをRenderで公開。Claude Codeを使ってポートフォリオサイトも開発。',
+    title: 'Launched SheetToolBox & portfolio site',
+    description: 'Built a Tauri desktop app for spreadsheet workflows. Developed this portfolio site with Claude Code.',
   },
   {
     year: '2025',
-    title: 'AI学習開始',
-    description: 'ChatGPTやClaudeなど大規模言語モデルの学習を開始。AIを活用したツール開発に挑戦。',
+    title: 'Started exploring AI & LLMs',
+    description: 'Began leveraging ChatGPT and Claude for tool development and workflow automation.',
   },
   {
     year: '2023',
-    title: 'プログラミング学習開始',
-    description: 'Pythonから学習を開始。業務効率化のためのスクリプト作成からスタート。',
+    title: 'Started learning Python',
+    description: 'Picked up Python to automate repetitive tasks at work. Built small scripts that grew into bigger projects.',
   },
 ];
 
@@ -68,7 +68,7 @@ export default function AboutPage() {
               Hi, I&apos;m Chiapuru
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300">
-              AI × 個人開発者
+              Indie maker & tool builder
             </p>
           </div>
         </div>
@@ -81,17 +81,16 @@ export default function AboutPage() {
             <h2 className="section-title">About Me</h2>
             <div className="prose prose-lg prose-gray dark:prose-invert">
               <p>
-                日々の業務で感じた「こんなツールがあったらいいな」を形にしている個人開発者です。
-                経営・財務分析など細かい数字を扱う仕事をしてきた経験から、業務効率化への強い関心があります。
+                I build tools that solve the problems I face at work.
+                With a background in finance and management, I know what it&apos;s like to wrestle with spreadsheets all day.
               </p>
               <p>
-                2023年にPythonを学び始め、最初は業務効率化のための小さなスクリプトを書いていました。
-                最近はAIの学習を始め、ChatGPTやClaudeなどを活用したツール開発に取り組んでいます。
-                このサイト自体もClaude Codeを使って開発しました。
+                I started coding in Python in 2023, and recently fell in love with Rust and Tauri for building fast, lightweight desktop apps.
+                This entire site was built with Claude Code.
               </p>
               <p>
-                私が作るツールは、すべて「自分が欲しかったもの」です。
-                同じような課題を抱えている方の役に立てれば嬉しいです。
+                Everything I build starts as something I needed myself.
+                If it helps you too, that&apos;s the best outcome I could ask for.
               </p>
             </div>
           </div>
@@ -161,7 +160,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <h2 className="section-title">Connect</h2>
             <p className="mb-8 text-gray-600 dark:text-gray-400">
-              お仕事のご依頼やご質問は、以下のSNSからお気軽にどうぞ。
+              Feel free to reach out on social media.
             </p>
             <div className="flex justify-center gap-6">
               <a
@@ -199,9 +198,9 @@ export default function AboutPage() {
       <section className="py-16">
         <div className="container-custom">
           <div className="rounded-2xl bg-gradient-to-r from-primary-500 to-primary-600 p-12 text-center text-white">
-            <h2 className="mb-4 text-3xl font-bold">Check out my work</h2>
+            <h2 className="mb-4 text-3xl font-bold">Explore what I&apos;ve built</h2>
             <p className="mb-8 text-primary-100">
-              私が開発したツールやブログ記事をご覧ください。
+              Browse my tools and blog posts.
             </p>
             <div className="flex flex-col justify-center gap-4 sm:flex-row">
               <Link

@@ -16,7 +16,7 @@ export default function Footer() {
               Chiapuru
             </Link>
             <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-              仕事を効率化するツールを作っています
+              Crafting tools I wish existed
             </p>
           </div>
 
