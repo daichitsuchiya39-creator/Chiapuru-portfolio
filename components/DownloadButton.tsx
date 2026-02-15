@@ -15,7 +15,7 @@ interface TierInfo {
   remaining: number;
 }
 
-export default function DownloadButton({ href, platform, version, fileName }: DownloadButtonProps) {
+export default function DownloadButton({ platform, version, fileName }: DownloadButtonProps) {
   const [isDownloading, setIsDownloading] = useState(false);
   const [currentTier, setCurrentTier] = useState<TierInfo | null>(null);
   const [loading, setLoading] = useState(true);

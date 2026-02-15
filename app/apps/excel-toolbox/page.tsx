@@ -407,7 +407,7 @@ export default function ExcelToolBoxPage() {
                       Launching Soon
                     </p>
                     <p className="mt-1 text-sm text-amber-700 dark:text-amber-300">
-                      We're finalizing payment setup. Downloads will be available within 1-2 business days.
+                      We&apos;re finalizing payment setup. Downloads will be available within 1-2 business days.
                     </p>
                   </div>
                 </div>

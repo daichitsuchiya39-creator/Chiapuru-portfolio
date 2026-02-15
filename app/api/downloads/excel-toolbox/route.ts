@@ -85,7 +85,7 @@ async function incrementCount(): Promise<number> {
   return newCount;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     const count = await getCount();
     const tierInfo = getCurrentTier(count);
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function POST() {
   try {
     const newCount = await incrementCount();
     const tierInfo = getCurrentTier(newCount);
