@@ -16,10 +16,10 @@ interface PricingTier {
 }
 
 const PRICING_TIERS: PricingTier[] = [
-  { name: 'free', maxDownloads: 50, price: 0 },
-  { name: 'early51', maxDownloads: 100, price: 9.99 },
-  { name: 'early101', maxDownloads: 200, price: 19.99 },
-  { name: 'basic', maxDownloads: Infinity, price: 29.99 },
+  { name: 'launch', maxDownloads: 50, price: 9.99 },
+  { name: 'early', maxDownloads: 150, price: 19.99 },
+  { name: 'middle', maxDownloads: 300, price: 39.99 },
+  { name: 'regular', maxDownloads: Infinity, price: 49.99 },
 ];
 
 function getCurrentTier(count: number) {

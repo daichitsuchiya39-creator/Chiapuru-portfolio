@@ -54,8 +54,8 @@ export default function DownloadCounter() {
   }
 
   const { currentTier, nextTier, total } = stats;
-  const isFree = currentTier.price === 0;
-  const isEnterprise = currentTier.name === 'basic';
+  const isFree = false;
+  const isEnterprise = currentTier.name === 'regular';
 
   // Progress within current tier
   const tierStart = currentTier.maxDownloads - currentTier.remaining - total;
@@ -65,41 +65,41 @@ export default function DownloadCounter() {
 
   // Tier-specific styling
   const tierStyles = {
-    free: {
+    launch: {
       gradient: 'from-green-50 to-emerald-50',
       border: 'border-green-200',
       badge: 'bg-green-100 text-green-700',
-      icon: '🎉',
-      title: 'Free Download Available',
+      icon: '🚀',
+      title: 'Launch Price',
       progressBar: 'from-green-500 to-emerald-600',
     },
-    early51: {
+    early: {
       gradient: 'from-blue-50 to-indigo-50',
       border: 'border-blue-200',
       badge: 'bg-blue-100 text-blue-700',
       icon: '💎',
-      title: 'Early Bird (51-100)',
+      title: 'Early Adopter',
       progressBar: 'from-blue-500 to-indigo-600',
     },
-    early101: {
+    middle: {
       gradient: 'from-purple-50 to-pink-50',
       border: 'border-purple-200',
       badge: 'bg-purple-100 text-purple-700',
-      icon: '🚀',
-      title: 'Early Bird (101-200)',
+      icon: '⭐',
+      title: 'Middle (151-300)',
       progressBar: 'from-purple-500 to-pink-600',
     },
-    basic: {
+    regular: {
       gradient: 'from-amber-50 to-yellow-50',
       border: 'border-amber-200',
       badge: 'bg-amber-100 text-amber-700',
       icon: '🏆',
-      title: 'Basic',
+      title: 'Regular Price',
       progressBar: 'from-amber-500 to-yellow-600',
     },
   };
 
-  const style = tierStyles[currentTier.name as keyof typeof tierStyles] || tierStyles.early51;
+  const style = tierStyles[currentTier.name as keyof typeof tierStyles] || tierStyles.launch;
 
   return (
     <div className={`rounded-lg border p-6 shadow-sm bg-gradient-to-r ${style.gradient} ${style.border}`}>

@@ -33,25 +33,6 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
       });
   }, []);
 
-  const handleDownload = async (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (isDownloading) {
-      e.preventDefault();
-      return;
-    }
-
-    setIsDownloading(true);
-
-    try {
-      await fetch('/api/downloads/excel-toolbox', {
-        method: 'POST',
-      });
-    } catch (error) {
-      console.error('Failed to increment download counter:', error);
-    } finally {
-      setIsDownloading(false);
-    }
-  };
-
   const handlePurchase = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
@@ -115,43 +96,6 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
         </div>
         <div className="h-5 w-20 animate-pulse rounded bg-gray-200"></div>
       </div>
-    );
-  }
-
-  if (currentTier.price === 0) {
-    return (
-      <a
-        href={href}
-        onClick={handleDownload}
-        className={`flex items-center justify-between rounded-xl border border-gray-200 p-4 transition-all dark:border-gray-600 ${
-          isDownloading
-            ? 'cursor-wait opacity-50'
-            : 'hover:border-primary-300 hover:bg-primary-50 dark:hover:border-primary-700 dark:hover:bg-primary-900/20'
-        }`}
-      >
-        <div className="flex items-center gap-3">
-          {info.icon}
-          <div>
-            <p className="font-semibold text-gray-900 dark:text-white">{info.label}</p>
-            <p className="text-xs text-gray-500 dark:text-gray-400">
-              {version} - {fileName}
-            </p>
-          </div>
-        </div>
-        <svg
-          className="h-5 w-5 text-gray-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-          />
-        </svg>
-      </a>
     );
   }
 
