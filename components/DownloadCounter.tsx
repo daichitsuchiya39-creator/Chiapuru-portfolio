@@ -55,7 +55,7 @@ export default function DownloadCounter() {
 
   const { currentTier, nextTier, total } = stats;
   const isFree = currentTier.price === 0;
-  const isEnterprise = currentTier.name === 'enterprise';
+  const isEnterprise = currentTier.name === 'basic';
 
   // Progress within current tier
   const tierStart = currentTier.maxDownloads - currentTier.remaining - total;
@@ -73,33 +73,33 @@ export default function DownloadCounter() {
       title: 'Free Download Available',
       progressBar: 'from-green-500 to-emerald-600',
     },
-    basic: {
+    early51: {
       gradient: 'from-blue-50 to-indigo-50',
       border: 'border-blue-200',
       badge: 'bg-blue-100 text-blue-700',
       icon: '💎',
-      title: 'Basic Tier',
+      title: 'Early Bird (51-100)',
       progressBar: 'from-blue-500 to-indigo-600',
     },
-    pro: {
+    early101: {
       gradient: 'from-purple-50 to-pink-50',
       border: 'border-purple-200',
       badge: 'bg-purple-100 text-purple-700',
       icon: '🚀',
-      title: 'Pro Tier',
+      title: 'Early Bird (101-200)',
       progressBar: 'from-purple-500 to-pink-600',
     },
-    enterprise: {
+    basic: {
       gradient: 'from-amber-50 to-yellow-50',
       border: 'border-amber-200',
       badge: 'bg-amber-100 text-amber-700',
       icon: '🏆',
-      title: 'Enterprise',
+      title: 'Basic',
       progressBar: 'from-amber-500 to-yellow-600',
     },
   };
 
-  const style = tierStyles[currentTier.name as keyof typeof tierStyles] || tierStyles.basic;
+  const style = tierStyles[currentTier.name as keyof typeof tierStyles] || tierStyles.early51;
 
   return (
     <div className={`rounded-lg border p-6 shadow-sm bg-gradient-to-r ${style.gradient} ${style.border}`}>

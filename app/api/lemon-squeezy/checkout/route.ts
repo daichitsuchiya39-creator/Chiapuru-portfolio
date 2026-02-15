@@ -4,7 +4,7 @@ export async function POST(request: NextRequest) {
   try {
     const { tier } = await request.json();
 
-    if (!tier || !['basic', 'pro', 'enterprise'].includes(tier)) {
+    if (!tier || !['early51', 'early101', 'basic'].includes(tier)) {
       return NextResponse.json(
         { error: 'Invalid tier specified' },
         { status: 400 }
@@ -13,9 +13,9 @@ export async function POST(request: NextRequest) {
 
     // Map tier to Lemon Squeezy product ID
     const productIds = {
+      early51: process.env.LEMON_SQUEEZY_EARLY51_PRODUCT_ID,
+      early101: process.env.LEMON_SQUEEZY_EARLY101_PRODUCT_ID,
       basic: process.env.LEMON_SQUEEZY_BASIC_PRODUCT_ID,
-      pro: process.env.LEMON_SQUEEZY_PRO_PRODUCT_ID,
-      enterprise: process.env.LEMON_SQUEEZY_ENTERPRISE_PRODUCT_ID,
     };
 
     const productId = productIds[tier as keyof typeof productIds];
