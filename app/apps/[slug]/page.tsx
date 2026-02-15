@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAppBySlug, getAllAppSlugs } from '@/lib/apps';
 import FavoriteButton from '@/components/FavoriteButton';
-import DownloadSection from '@/components/DownloadSection';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -222,11 +221,6 @@ export default async function AppDetailPage({ params }: Props) {
             </div>
           </div>
         </section>
-      )}
-
-      {/* Download Section (auth-gated) */}
-      {app.downloadLinks && app.downloadLinks.length > 0 && (
-        <DownloadSection downloadLinks={app.downloadLinks} />
       )}
 
       {/* Content Section */}
