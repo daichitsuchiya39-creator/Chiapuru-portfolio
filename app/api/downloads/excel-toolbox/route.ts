@@ -2,12 +2,62 @@ import { NextRequest, NextResponse } from 'next/server';
 import fs from 'fs/promises';
 import path from 'path';
 
-const MAX_FREE_DOWNLOADS = 300;
 const COUNTER_FILE = path.join(process.cwd(), 'private', 'download-counter.json');
 
 interface CounterData {
   count: number;
   lastUpdated: string;
+}
+
+interface PricingTier {
+  name: string;
+  maxDownloads: number;
+  price: number;
+}
+
+const PRICING_TIERS: PricingTier[] = [
+  { name: 'free', maxDownloads: 50, price: 0 },
+  { name: 'basic', maxDownloads: 100, price: 10 },
+  { name: 'pro', maxDownloads: 300, price: 20 },
+  { name: 'enterprise', maxDownloads: Infinity, price: 30 },
+];
+
+function getCurrentTier(count: number) {
+  for (let i = 0; i < PRICING_TIERS.length; i++) {
+    const tier = PRICING_TIERS[i];
+    if (count < tier.maxDownloads) {
+      const remaining = tier.maxDownloads - count;
+      const nextTier = i < PRICING_TIERS.length - 1 ? PRICING_TIERS[i + 1] : null;
+
+      return {
+        currentTier: {
+          name: tier.name,
+          price: tier.price,
+          remaining,
+          maxDownloads: tier.maxDownloads,
+        },
+        nextTier: nextTier
+          ? {
+              name: nextTier.name,
+              price: nextTier.price,
+              startsAt: tier.maxDownloads,
+            }
+          : null,
+      };
+    }
+  }
+
+  // Enterprise tier (unlimited)
+  const enterpriseTier = PRICING_TIERS[PRICING_TIERS.length - 1];
+  return {
+    currentTier: {
+      name: enterpriseTier.name,
+      price: enterpriseTier.price,
+      remaining: Infinity,
+      maxDownloads: Infinity,
+    },
+    nextTier: null,
+  };
 }
 
 async function getCount(): Promise<number> {
@@ -16,7 +66,6 @@ async function getCount(): Promise<number> {
     const parsed: CounterData = JSON.parse(data);
     return parsed.count || 0;
   } catch {
-    // ファイルが存在しない場合は0を返す
     return 0;
   }
 }
@@ -29,7 +78,6 @@ async function incrementCount(): Promise<number> {
     lastUpdated: new Date().toISOString(),
   };
 
-  // ディレクトリが存在しない場合は作成
   const dir = path.dirname(COUNTER_FILE);
   await fs.mkdir(dir, { recursive: true });
 
@@ -40,14 +88,11 @@ async function incrementCount(): Promise<number> {
 export async function GET(request: NextRequest) {
   try {
     const count = await getCount();
-    const remaining = Math.max(0, MAX_FREE_DOWNLOADS - count);
-    const isFree = count < MAX_FREE_DOWNLOADS;
+    const tierInfo = getCurrentTier(count);
 
     return NextResponse.json({
       total: count,
-      remaining,
-      isFree,
-      maxFree: MAX_FREE_DOWNLOADS,
+      ...tierInfo,
     });
   } catch (error) {
     console.error('Failed to get download count:', error);
@@ -61,14 +106,11 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const newCount = await incrementCount();
-    const remaining = Math.max(0, MAX_FREE_DOWNLOADS - newCount);
-    const isFree = newCount <= MAX_FREE_DOWNLOADS;
+    const tierInfo = getCurrentTier(newCount);
 
     return NextResponse.json({
       total: newCount,
-      remaining,
-      isFree,
-      maxFree: MAX_FREE_DOWNLOADS,
+      ...tierInfo,
     });
   } catch (error) {
     console.error('Failed to increment download count:', error);

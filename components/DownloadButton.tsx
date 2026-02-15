@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface DownloadButtonProps {
   href: string;
@@ -9,8 +9,29 @@ interface DownloadButtonProps {
   fileName: string;
 }
 
+interface TierInfo {
+  name: string;
+  price: number;
+  remaining: number;
+}
+
 export default function DownloadButton({ href, platform, version, fileName }: DownloadButtonProps) {
   const [isDownloading, setIsDownloading] = useState(false);
+  const [currentTier, setCurrentTier] = useState<TierInfo | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch('/api/downloads/excel-toolbox')
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrentTier(data.currentTier);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Failed to fetch tier info:', err);
+        setLoading(false);
+      });
+  }, []);
 
   const handleDownload = async (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (isDownloading) {
@@ -21,14 +42,40 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
     setIsDownloading(true);
 
     try {
-      // カウンターをインクリメント
       await fetch('/api/downloads/excel-toolbox', {
         method: 'POST',
       });
     } catch (error) {
       console.error('Failed to increment download counter:', error);
     } finally {
-      // ダウンロードは通常通り進行
+      setIsDownloading(false);
+    }
+  };
+
+  const handlePurchase = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    if (!currentTier) return;
+
+    setIsDownloading(true);
+
+    try {
+      const response = await fetch('/api/lemon-squeezy/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: currentTier.name }),
+      });
+
+      const data = await response.json();
+
+      if (data.checkoutUrl) {
+        window.location.href = data.checkoutUrl;
+      } else {
+        console.error('No checkout URL received');
+      }
+    } catch (error) {
+      console.error('Failed to create checkout:', error);
+    } finally {
       setIsDownloading(false);
     }
   };
@@ -54,11 +101,65 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
 
   const info = platformInfo[platform];
 
+  if (loading || !currentTier) {
+    return (
+      <div className="flex items-center justify-between rounded-xl border border-gray-200 p-4 dark:border-gray-600">
+        <div className="flex items-center gap-3">
+          {info.icon}
+          <div>
+            <p className="font-semibold text-gray-900 dark:text-white">{info.label}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {version} - {fileName}
+            </p>
+          </div>
+        </div>
+        <div className="h-5 w-20 animate-pulse rounded bg-gray-200"></div>
+      </div>
+    );
+  }
+
+  if (currentTier.price === 0) {
+    return (
+      <a
+        href={href}
+        onClick={handleDownload}
+        className={`flex items-center justify-between rounded-xl border border-gray-200 p-4 transition-all dark:border-gray-600 ${
+          isDownloading
+            ? 'cursor-wait opacity-50'
+            : 'hover:border-primary-300 hover:bg-primary-50 dark:hover:border-primary-700 dark:hover:bg-primary-900/20'
+        }`}
+      >
+        <div className="flex items-center gap-3">
+          {info.icon}
+          <div>
+            <p className="font-semibold text-gray-900 dark:text-white">{info.label}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {version} - {fileName}
+            </p>
+          </div>
+        </div>
+        <svg
+          className="h-5 w-5 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+          />
+        </svg>
+      </a>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      onClick={handleDownload}
-      className={`flex items-center justify-between rounded-xl border border-gray-200 p-4 transition-all dark:border-gray-600 ${
+    <button
+      onClick={handlePurchase}
+      disabled={isDownloading}
+      className={`flex w-full items-center justify-between rounded-xl border border-gray-200 p-4 transition-all dark:border-gray-600 ${
         isDownloading
           ? 'cursor-wait opacity-50'
           : 'hover:border-primary-300 hover:bg-primary-50 dark:hover:border-primary-700 dark:hover:bg-primary-900/20'
@@ -66,26 +167,31 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
     >
       <div className="flex items-center gap-3">
         {info.icon}
-        <div>
+        <div className="text-left">
           <p className="font-semibold text-gray-900 dark:text-white">{info.label}</p>
           <p className="text-xs text-gray-500 dark:text-gray-400">
             {version} - {fileName}
           </p>
         </div>
       </div>
-      <svg
-        className="h-5 w-5 text-gray-400"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
-        />
-      </svg>
-    </a>
+      <div className="flex items-center gap-2">
+        <span className="text-sm font-semibold text-primary-600 dark:text-primary-400">
+          ${currentTier.price}
+        </span>
+        <svg
+          className="h-5 w-5 text-gray-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+          />
+        </svg>
+      </div>
+    </button>
   );
 }

@@ -10,6 +10,7 @@
     "deploy": "git add . && git commit -m 'Update content' && git push"
   },
   "dependencies": {
+    "@lemonsqueezy/lemonsqueezy.js": "^4.0.0",
     "@supabase/auth-helpers-nextjs": "^0.6.0",
     "@supabase/supabase-js": "^2.0.4",
     "@vercel/analytics": "^1.6.1",
