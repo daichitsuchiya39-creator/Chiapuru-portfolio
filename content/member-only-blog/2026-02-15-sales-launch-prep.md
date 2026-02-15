@@ -1,7 +1,7 @@
 ---
 title: "SheetToolBox Sales Launch Prep — What Changed Today"
 date: "2026-02-15"
-excerpt: "Full English rebrand of app pages, tiered pricing with Lemon Squeezy, discount codes for beta testers, and Web version limitation warnings. Here's everything that went live today."
+excerpt: "Full English rebrand of app pages, tiered pricing with Lemon Squeezy, discount codes for beta testers, and Web version limitation warnings. Product pages are in 'Coming Soon' mode while we wait for Lemon Squeezy payment approval."
 tags: ["SheetToolBox", "Lemon Squeezy", "pricing", "launch"]
 ---
 
@@ -9,7 +9,9 @@ tags: ["SheetToolBox", "Lemon Squeezy", "pricing", "launch"]
 
 Big update today. We moved from "free desktop download" to a real paid product with tiered pricing, discount codes for testers, and clear messaging around Web vs Desktop.
 
-Here's a full breakdown.
+**Update:** Lemon Squeezy's payment approval process hasn't been completed yet, so all product pages are currently in **"Coming Soon"** mode. Approval should come through within a few days, and we'll officially launch once it's cleared.
+
+Here's a full breakdown of everything that was prepared.
 
 ---
 
@@ -107,12 +109,14 @@ Even if you don't need it yourself, sharing it with a colleague who works with s
 
 Thank you for being here. Seriously.
 
-**[Get SheetToolBox ($9.99 Launch Price) →](/apps/excel-toolbox)**
+**[Get SheetToolBox ($9.99 Launch Price) →](/apps/excel-toolbox)** *(Coming Soon — waiting for payment approval)*
 
 ---
 
 ## Next Steps
 
+- [ ] **Wait for Lemon Squeezy payment approval** (expected within a few days)
+- [ ] Switch product pages from "Coming Soon" to live purchase mode
 - [ ] Create discount codes in Lemon Squeezy for beta testers
 - [ ] Verify checkout flow end-to-end (test purchase with discount code)
 - [ ] Webhook integration — store purchases in Supabase, send confirmation emails
