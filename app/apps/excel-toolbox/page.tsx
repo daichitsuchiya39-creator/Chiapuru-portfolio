@@ -303,13 +303,24 @@ export default function ExcelToolBoxPage() {
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
                     <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
-                      Large Files
+                      File Size Limit
                     </td>
-                    <td className="px-6 py-3 text-center text-gray-600 dark:text-gray-400">
-                      Up to 100MB
+                    <td className="px-6 py-3 text-center text-orange-600 dark:text-orange-400">
+                      Up to 5MB
                     </td>
                     <td className="px-6 py-3 text-center text-green-600 dark:text-green-400">
                       No limit
+                    </td>
+                  </tr>
+                  <tr className="bg-white dark:bg-gray-800">
+                    <td className="px-6 py-3 text-gray-700 dark:text-gray-300">
+                      Data Privacy
+                    </td>
+                    <td className="px-6 py-3 text-center text-orange-600 dark:text-orange-400">
+                      Uploaded to server
+                    </td>
+                    <td className="px-6 py-3 text-center text-green-600 dark:text-green-400">
+                      100% local
                     </td>
                   </tr>
                   <tr className="bg-white dark:bg-gray-800">
@@ -371,6 +382,9 @@ export default function ExcelToolBoxPage() {
                 />
               </div>
             </div>
+            <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+              Have a discount code? You can enter it at checkout.
+            </p>
           </div>
         </div>
       </section>
@@ -384,6 +398,10 @@ export default function ExcelToolBoxPage() {
             </h2>
             <p className="mb-8 text-primary-100">
               No installation needed — try each tool right in your browser.
+              <br />
+              <span className="text-sm text-primary-200">
+                Web version: 5MB file size limit. Not suitable for sensitive or confidential data.
+              </span>
             </p>
             <Link
               href="/apps/excel"

@@ -47,5 +47,5 @@ January.xlsx + February.xlsx + March.xlsx
 
 - Supported formats: .xlsx, .xlsm
 - Output format: .xlsx (macro-free)
-- Max file size: 100MB (total)
+- Max file size: 5MB (Web) / Unlimited (Desktop)
 - Sheet names: Auto-trimmed to 31 characters (Excel limit)

@@ -204,6 +204,46 @@ export default async function AppDetailPage({ params }: Props) {
         </section>
       )}
 
+      {/* Web Version Warning */}
+      {app.category === 'excel' && app.externalLink && (
+        <section className="py-8">
+          <div className="container-custom">
+            <div className="mx-auto max-w-2xl rounded-lg border border-orange-200 bg-orange-50 p-4 dark:border-orange-800 dark:bg-orange-900/20">
+              <div className="flex items-start gap-3">
+                <svg
+                  className="mt-0.5 h-5 w-5 shrink-0 text-orange-500"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <div>
+                  <h4 className="font-semibold text-orange-800 dark:text-orange-300">
+                    Web Version Limitations
+                  </h4>
+                  <p className="mt-1 text-sm text-orange-700 dark:text-orange-400">
+                    The web version has a 5MB file size limit and is not recommended for
+                    sensitive or confidential data. For larger files and full offline
+                    privacy, use the{' '}
+                    <Link
+                      href="/apps/excel-toolbox"
+                      className="font-semibold underline hover:no-underline"
+                    >
+                      Desktop version
+                    </Link>
+                    .
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Screenshots Section */}
       {app.screenshots && app.screenshots.length > 0 && (
         <section className="py-16">
@@ -247,7 +287,7 @@ export default async function AppDetailPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 font-semibold text-primary-600 transition-all duration-200 hover:bg-gray-100"
               >
-                今すぐ使う
+                Try it now
                 <svg className="ml-2 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path
                     strokeLinecap="round"

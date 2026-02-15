@@ -40,5 +40,5 @@ Excel macros (VBA) are useful for automation, but they can also contain maliciou
 ## Technical specs
 
 - Supported format: .xlsm → .xlsx
-- Max file size: 100MB
+- Max file size: 5MB (Web) / Unlimited (Desktop)
 - Processing method: File structure reconstruction via openpyxl

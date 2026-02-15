@@ -39,3 +39,8 @@ Sheet Pic is a web application that lets you easily extract specific sheets from
 In my day job, I frequently dealt with Excel files containing dozens of sheets. Manually copying specific sheets into a new file was time-consuming and error-prone.
 
 So I built a tool to automate the process.
+
+## Technical specs
+
+- Supported formats: .xlsx, .xlsm
+- Max file size: 5MB (Web) / Unlimited (Desktop)
