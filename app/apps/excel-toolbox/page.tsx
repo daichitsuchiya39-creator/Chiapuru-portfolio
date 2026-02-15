@@ -29,7 +29,7 @@ const tools = [
     title: 'Sheet Pic',
     description:
       'Extract specific sheets from spreadsheet files. Use keyword search or manual selection to split workbooks efficiently.',
-    image: '/images/app_image/Excel-Sheet-Pic.png',
+    image: '/images/app_image/SheetToolsPic_en/SheetPick.png',
     features: ['Batch extract by keyword', 'Manual sheet selection', 'Preserves formatting'],
   },
   {
@@ -37,7 +37,7 @@ const tools = [
     title: 'Sheet Merge',
     description:
       'Merge sheets from multiple spreadsheet files into one. Consolidate and share across teams.',
-    image: '/images/app_image/SheetMarge.png',
+    image: '/images/app_image/SheetToolsPic_en/SheetMerge.png',
     features: ['Batch merge multiple files', 'Auto-adjusts sheet names', 'Preserves formulas & formatting'],
   },
   {
@@ -45,7 +45,7 @@ const tools = [
     title: 'Macro Remover',
     description:
       'Remove VBA macros from .xlsm files and convert them to safe .xlsx format.',
-    image: '/images/app_image/Excel-Macro-Remover.png',
+    image: '/images/app_image/SheetToolsPic_en/MacroRemover.png',
     features: ['One-click macro removal', 'Preserves data & formatting', 'Drag & drop support'],
   },
 ];

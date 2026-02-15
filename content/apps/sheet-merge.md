@@ -2,7 +2,7 @@
 title: "Sheet Merge"
 category: "excel"
 description: "Merge sheets from multiple Excel files into a single file. Consolidate and manage all your worksheets in one place."
-image: "/images/app_image/SheetMarge.png"
+image: "/images/app_image/SheetToolsPic_en/SheetMerge.png"
 features:
   - "Multiple File Support - Merge two or more Excel files at once"
   - "Auto Sheet Naming - Prevents duplicates with 'FileName_SheetName' format"

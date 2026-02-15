@@ -2,7 +2,7 @@
 title: "Macro Remover"
 category: "excel"
 description: "Remove macros from Excel files (.xlsm) and convert them to safe .xlsx files. All formatting and data are fully preserved."
-image: "/images/app_image/Excel-Macro-Remover.png"
+image: "/images/app_image/SheetToolsPic_en/MacroRemover.png"
 features:
   - "One-Click Macro Removal - Just upload your file and it converts automatically"
   - "Formatting & Data Preserved - Cell styles, formulas, and layouts stay intact"

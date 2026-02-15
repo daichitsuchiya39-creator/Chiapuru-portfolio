@@ -2,7 +2,7 @@
 title: "Sheet Pic"
 category: "excel"
 description: "Easily split Excel files by sheet name. Extract only the sheets you need using keyword search or manual selection."
-image: "/images/app_image/Excel-Sheet-Pic.png"
+image: "/images/app_image/SheetToolsPic_en/SheetPick.png"
 features:
   - "Keyword Search Extraction - Batch-extract sheets by keywords in their names"
   - "Manual Multi-Sheet Selection - Pick exactly the sheets you need"
