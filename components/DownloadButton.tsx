@@ -19,6 +19,7 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
   const [isDownloading, setIsDownloading] = useState(false);
   const [currentTier, setCurrentTier] = useState<TierInfo | null>(null);
   const [loading, setLoading] = useState(true);
+  const isPurchaseEnabled = process.env.NEXT_PUBLIC_ENABLE_PURCHASES === 'true';
 
   useEffect(() => {
     fetch('/api/downloads/excel-toolbox')
@@ -95,6 +96,41 @@ export default function DownloadButton({ href, platform, version, fileName }: Do
           </div>
         </div>
         <div className="h-5 w-20 animate-pulse rounded bg-gray-200"></div>
+      </div>
+    );
+  }
+
+  // If purchases are disabled, show "Coming Soon" button
+  if (!isPurchaseEnabled) {
+    return (
+      <div className="flex w-full items-center justify-between rounded-xl border border-gray-200 bg-gray-50 p-4 dark:border-gray-600 dark:bg-gray-800/50">
+        <div className="flex items-center gap-3">
+          {info.icon}
+          <div className="text-left">
+            <p className="font-semibold text-gray-900 dark:text-white">{info.label}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {version} - {fileName}
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1.5 dark:bg-amber-900/30">
+          <svg
+            className="h-4 w-4 text-amber-600 dark:text-amber-400"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span className="text-sm font-semibold text-amber-700 dark:text-amber-300">
+            Coming Soon
+          </span>
+        </div>
       </div>
     );
   }

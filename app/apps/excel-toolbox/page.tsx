@@ -382,9 +382,37 @@ export default function ExcelToolBoxPage() {
                 />
               </div>
             </div>
-            <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
-              Have a discount code? You can enter it at checkout.
-            </p>
+            {process.env.NEXT_PUBLIC_ENABLE_PURCHASES === 'true' ? (
+              <p className="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                Have a discount code? You can enter it at checkout.
+              </p>
+            ) : (
+              <div className="mt-4 rounded-lg border border-amber-200 bg-amber-50 p-4 dark:border-amber-800 dark:bg-amber-900/20">
+                <div className="flex items-start gap-3">
+                  <svg
+                    className="mt-0.5 h-5 w-5 shrink-0 text-amber-600 dark:text-amber-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <div>
+                    <p className="text-sm font-medium text-amber-900 dark:text-amber-200">
+                      Launching Soon
+                    </p>
+                    <p className="mt-1 text-sm text-amber-700 dark:text-amber-300">
+                      We're finalizing payment setup. Downloads will be available within 1-2 business days.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
